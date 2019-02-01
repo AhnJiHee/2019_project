@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원정보창</title>
+</head>
+<body>
+
+<%
+String result ="";
+	if ( session.getAttribute("id") != null && session.getAttribute("pw") != null){
+		String id = (String) session.getAttribute("id");
+		String pw = (String) session.getAttribute("pw");
+		result = id + " 님 환영합니다.";
+	} else{
+		result = "로그인이 필요합니다.<br><a href = login.jsp>로그인하러 가기</a>";
+	}
+%>
+
+<h1><%=result %></h1>
+
+</body>
+</html>

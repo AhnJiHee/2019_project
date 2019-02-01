@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#first {color : blue;}
+.jquerycls{background-color : gray;}
+</style>
+<script src="jquery-3.2.1.min.js"></script>
+<script type ="text/javascript">
+$(document).ready(function(){
+	//$("#first").css("color", "red"); // id 선택
+	//$("input").css("color", "blue"); // 태그 선택
+ 	//$(".green").css('color', 'green'); // 클래스 선택
+ 	//$("input[type=text]").css("background-color", "pink");
+ 	// = $("input:text").css("background-color", "pink");
+ 	
+	//$("input[value $= 입력]").css("background-color", "pink");
+	//		 $= 연산 ... 해당 문자열로 끝나는가
+	// $("input[value ^= 암호]").css("background-color", "pink");
+	// 		 ^= 연산 ... 해당 문자열로 시작하는가
+	// $("select option[selected=selected]").css('color', 'red');
+	// = $("select option:selected").css('color', 'red');
+	// 		 점심 메뉴 기본 선택으로 지정된 문자열의 글자색을 변경하자
+	// $("h1 a").css('color', 'green')
+	// 		 a 태그 문자열 색상을 green으로 바꾸자 ... 태그의 포함관계는 공백표현
+	// $("h1 , a").css('color', 'green')
+	// 		 h1과 a태그 모두 변경 ... 복수 태그 선택
+	
+	// $("option:eq(n)").css('color', 'orange');
+	// 		(n-1)번째 항목만
+	// $("option:lt(n)").css('color', 'orange');
+	// 		인덱스가 n번보다 작은 값만
+	// $("option:gt(n)").css('color', 'orange');
+	// 		인덱스가 n보다 큰 값만
+	// $("option:first").css('color', 'orange')
+	//		첫 번째 항목만
+	// $("option:last").css('color', 'orange')
+	//		마지막 항목만
+	// $("option:even").css('color', 'orange')
+	//		홀수번째(짝수 인덱스) 항목만
+	// $("option:odd").css('color', 'orange')
+	// 		짝수번째(홀수 인덱스) 항목만
+ 	
+/* 	setTimeout(function(){
+		$("h1, a").addClass("jquerycls");
+	}, 2000);
+	setTimeout(function(){
+		$("a").removeClass("jquerycls");
+	}, 4000); */
+	//		class 속성 추가/삭제
+	
+	// 		a 태그 문자열 조회 - 출력
+/* 	alert($('a').html());
+	$('a').html("링크 문자열 변경"); */
+	
+	//		option 태그 내 문자열 반복 조회
+/* 	for(var i = 0; i < $('option').length; i++){
+		alert($('option').get(i).innerHTML);
+	}
+					또는
+	$('option').each(function(index){
+		alert(index + "-" + $(this).html());
+	});	*/
+	
+/* alert($('input[type=text]').val());
+	$('input[type=text]').val('값변경');
+	alert($('input[type=text]').val()); */
+	
+////////////////////////////alert 이용 출력////////////////////////////////////
+
+$('#output').html( $('a').attr('href') );
+$('a').attr("href", "http://www.google.com");
+$('#output').html( 
+		$('#output').html() + "--" +
+		$('a').attr('href') );
+$('a').removeAttr('href');
+$('#output').html( 
+		$('#output').html() + "--" +
+		$('a').attr('href') );
+
+//////////////////////////// output 이용 출력 ////////////////////////////////
+
+
+/* $("#first").show(2000, function(){
+	$("#output").html("보이기 완료");
+}); */
+/* $("#first").remove(); */
+
+$("input[value=감추기]").on('click', function(){
+	$("#first").fadeOut(2000, function(){
+		$("#output").html("숨기기 완료");
+	});
+}); // on함수 1
+
+$("input[value=보이기]").on('click', function(){
+	$("#first").fadeIn(2000, function(){
+		$("#output").html("보이기 완료");
+	});
+}); // on함수 2
+
+var cnt = 0;
+$('input[type=text]').on('keyup', function(){
+	$("#output").html($('input[type=text]').val());
+	cnt ++;
+	if (cnt > 10){
+		$("#output").html("모 야메룽다");
+		$('input[type=text]').attr("readonly", "readonly");
+	}
+
+$("input[value=입력 중단]").on('click', function(){
+	$('input[type=text]').off('keyup');
+});
+	
+}); // on함수 3
+	// 키 입력 이벤트 : 누르다(keydown), 누른상태(keypressed), 떼다(keyup)
+
+////////////////////////////// 이벤트 처리 /////////////////////////////////////
+	
+}); //ready end
+
+/* Jquery는
+    $(자바스크립트객체).함수()
+	$("css selector").함수()
+	의 기본 문법을 지니고 있다 */
+	
+	
+</script>
+</head>
+<body>
+<h1 id = "first"> jquery 연습 </h1>
+<a class="green" href ="http://www.daum.net">링크 동작 테스트 태그</a><br>
+<input type=text value ="텍스트 입력">
+<input type="button" value = "입력 중단"><br>
+<input type="password" value ="암호 입력"><br>
+<input type="button" value = "감추기">
+<input type="button" value = "보이기">
+
+
+<h1> 점심 메뉴는?</h1>
+<select>
+	<option> 한식 </option>
+	<option> 분식 </option>
+	<option selected="selected"> 중식 </option>
+	<option> 일식 </option>
+	<option> 양식 </option>
+</select>
+
+<p id="output"> </p>
+
+</body>
+</html>

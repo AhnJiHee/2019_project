@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#general").on('click',function(){
+		location.href="ajax_login.jsp?id=" + $("#id").val() + "&pw=" + $("#pw").val();
+		
+	}) // #general.on end
+	// 이러한 방식은 get만 가능
+	// post를 이용하고 싶다면 form-submit밖에 안된다.
+	
+	$("#ajax").on('click',function(){
+		requestAjax();
+	}) // #ajax.on end
+}); // ready end
+
+function requestAjax(){
+	$.ajax({
+		url : 'ajax_login.jsp',
+		type : 'POST',
+		data : {
+			'id' : $("#id").val(),
+			'pw' : $("#pw").val()
+		},
+		success : function(server_output){
+			var jsonobj = JSON.parse(server_output);
+			if (jsonobj.auth == true){
+				alert ("ok");
+				$("#here").html
+						( jsonobj.time + " 에 정상적으로 로그인하셨습니다.");
+				$("#here").css('border', '2px solid green');
+			} else{
+				$("#here").html("로그인 정보를 확인하세요");
+				$("#here").css('border', '2px solid red');
+			}
+		},
+		error : function() {
+			alert("오류 발생");
+		},
+		complete : function () {
+			alert("통신 완료");	
+		}
+	}); //$.ajax end
+} // requestAjax end
+
+</script>
+</head>
+<body>
+<form>
+아이디 : <input type=text id="id" name="id"> <br>
+암호 : <input type="password" id="pw" name="pw"> <br>
+<input type="button" id="general" value="로그인 요청"> <br>
+<input type="button" id="ajax" value="ajax 로그인 요청"> <br>
+</form>
+<h3 id=  "here"> </h3>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 로그인 화면 </title>
+</head>
+<body>
+<h1> 로그인 화면 </h1>
+<form action = "login" method="post">
+<!-- button : 내장된 기능이 없어 on메소드로 지정해주어야 한다
+	 reset : 클릭 시 이전 입력된 양식(동일 form태그 내부)들 모두 삭제
+	 submit : 클릭 시 action 속성값으로 입력된 데이터(동일 form태그 내부) 전송
+	 즉, 기능이 정해진 reset과 submit은 form태그 내부에만 작성해야 한다 -->
+	 
+<!-- http://localhost:8081/login (url) 
+	?
+		id=hr (변수=입력값)
+	& 
+		pw=1111 (변수=입력값) 
+	
+	* form의 역할 
+1. 입력 양식 제공 ... input type 등
+2. 지정 서버 전송 	... <form action = (http://localhost:8081/Servlet 일치하면 생략)/login>-->
+
+아이디 입력 : <input type=text name ="id"><br>
+암호 입력 : <input type="password" name = "pw"><br>
+ 취미(복수 응답 가능): <br>
+ <Input name = "hobby" type="checkbox" value = "자바">자바 
+ <Input name = "hobby" type="checkbox" value = "하둡">HADOOP 
+ <Input name = "hobby" type="checkbox" value = "R">알 
+ <Input name = "hobby" type="checkbox" value = "파이썬">PYTHON 
+ <input type="submit" value = "로그인">
+</form>
+
+<h1><a href="login?id=oracle&pw=aaaa"> 로그인 결과 출력</a></h1>
+
+</body>
+</html>

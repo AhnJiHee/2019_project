@@ -1,0 +1,33 @@
+package dao;
+
+public class MemberDAO {
+	
+	// 회원가입 메서드
+	public MemberVO signIn {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+				
+			String sql = 
+					"insert into member values "
+					+ " ( ? , ? , ? , ? , sysdate , ?)";
+			PreparedStatement pt = con.prepareStatement(sql);
+
+			pt.setString(1, id);
+			pt.setInt(2, pw);
+			pt.setString(3, name);
+			pt.setString(4, phone);
+			pt.setString(5, email);	
+				
+			int insertRow = pt.executeUpdate();
+			if( insertRow==1) {
+				result = "회원가입이 완료되었습니다.";			
+			} else {
+			}
+	}
+	
+	
+	// 회원조회 메서드
+	
+	
+}

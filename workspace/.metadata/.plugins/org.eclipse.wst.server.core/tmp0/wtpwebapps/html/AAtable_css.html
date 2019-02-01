@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	table{border:3px solid silver; width: 500px; text-align: center; margin: auto;}
+	th, td{border-width: 3px; border-style: solid; border-color: navy; border-radius: 30px;}
+	img{width: 100px;height:100px;}
+	caption{caption-side: bottom;}
+	#first tr:nth-of-type(2n) td{background-color: lime;}
+</style>
+</head>
+<body>
+<h1>테이블 태그 연습</h1>
+	<TABLE id="first">
+	<tr><th>1열들</th><th>2열들</th></tr>
+	<TR><TD rowspan=2>1행1열</TD><td>1행2열</td></TR>
+	<TR><td>2행2열</td></TR>
+	<TR><TD>3행1열</TD><td>3행2열</td></TR>
+	<tr><td colspan=2>4행1열</td></tr>
+	</TABLE>
+	
+	<table>
+	<caption>로그인화면</caption>
+	<tr><td>아이디</td><td width=70></td></tr>
+	<tr><td>비밀번호</td><td></td></tr>
+	<td colspan=2>로그인</td>
+	
+	</table>
+	
+<img src="images/images/html5.jpg" >	
+<img src="images/images/google.png" >	
+<img src="images/images/android.jpg" >	
+	
+</body>
+</html>

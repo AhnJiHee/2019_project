@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>테이블 태그 연습</h1>
+
+<h3>
+
+<p style = "color : navy"> 	1. 기본 세팅 "tr" 행 "tr" 열 "th" 열 머리</p>
+<table border = 2>
+	<tr>
+		<th>1열들</th> <th>2열들</th>
+	</tr>
+	<tr>
+		<td>1행1열</td> <td>1행2열</td>
+	</tr>
+	<tr>
+		<td>2행1열</td> <td>2행2열</td>
+	</tr>
+	<tr>
+		<td>3행1열</td> <td>3행2열</td>
+	</tr>
+</table>
+
+<hr>
+
+<p style = "color : olive"> 	2. 심화 세팅 "rowspan" 세로길이 "colspan" 가로길이 </p>
+<table border = 2>
+	<tr>
+								<th>1열들</th> <th>2열들</th>
+	</tr>
+	<tr>
+		<td rowspan = "2">1행1열</td> <td>1행2열</td>
+	</tr>
+	<tr>
+					<!--   v v v  -->			  <td>2행2열</td>
+	</tr>
+	<tr>
+						<td> 	3행1열</td> <td>3행2열</td>
+	</tr>
+	<tr>
+			<td colspan = "2">4행1열</td> <!--  >>> -->
+	</tr>
+</table>
+
+<hr>
+
+<p style = "color : aqua">3. 로그인 창 만들기 </p>
+<table border = 2>
+<caption>로그인 창</caption>
+<tr>
+	<td> 아이디 </td> <td width = 200> </td> <!-- <td rowspan = "2"> 로그인</td> -->
+</tr>
+<tr>
+	<td> 비밀번호 </td> <td width = 200> </td> 
+</tr>
+<tr>
+	<td colspan = "2"> 로그인</td>
+</tr>
+</table>
+
+</h3>
+
+
+</body>
+</html>

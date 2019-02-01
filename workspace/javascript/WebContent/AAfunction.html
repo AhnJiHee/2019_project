@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//1. 변수저럼 정의 
+var area = function(w, h){
+//	var w = 6;
+//	var h = 10; 
+	return (w*h); //alert 하면 area()==>undefined
+}
+var result = area(5,6,7); // 변수개수가 모자르면 안되지만, 많은건 상관 X 뒤에는 신경쓰지 않음
+document.write(result+"<br>");
+var result = area(10,15);
+document.write(result+"<br>");
+
+//var result = area();
+//document.write(result+"<br>");
+//document.write(area()+"<br>");
+
+//2.함수 이름 정의 : script 전체에서 호출 가능
+print();
+function print(){
+	document.write("print함수입니다."+"<br>");
+}
+document.write(typeof area + "<br>");
+document.write(typeof print +"<br>");
+
+function test(f){//매개변수를 함수로!!
+	document.write(f+"<br>");
+	f();
+}
+var userf = function(){
+	alert("userf 함수입니다.");
+}
+test(userf);
+
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

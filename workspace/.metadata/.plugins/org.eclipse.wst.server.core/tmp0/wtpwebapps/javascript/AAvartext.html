@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	//alert("<h1>브라우저 출력</h1>");
+	//prompt("아이디를 입력하세요.");
+	//confirm("20세 이상입니까?");
+	document.write("<h1>"+(100+200)+"</h1>");	
+	
+	var i = 100;
+	var d = 3.14;
+	var c = 'a';
+	var s = 'javascript';
+	var b = false;
+	var br = "<br>"
+	var no;
+	var arr = ['1',2,3,4,5];
+	arr[5] = 6; //추가
+	arr[5] = 7; //수정
+	var f = function() {alert("f"); }
+	var num = 9/2;
+	var title = "oracle jaVa SCRIPT"
+	
+	
+	//1.number 2.string(메소드 동일 length, toUpperCase, ...)
+	//3.boolean 4.undefined 5.object
+	document.write(typeof i + "<br>");
+	document.write(typeof d + br);
+	document.write(typeof c +br);
+	document.write(typeof s + br);
+	document.write(typeof b + br);
+	document.write(no*10 + br);
+	//undefined 변수가 숫자 아니다- *연산 불가 ==>Not A Number:NaN
+	document.write(typeof arr + br);
+	document.write(arr[5] + br)
+	document.write(typeof f + br);
+	document.write(num + br);
+	document.write(parseInt(num) + br);
+	document.write("title 문자열 개수  "+title.length + br);
+	document.write("title 대문자 변경  "+title.toUpperCase() + br);
+	document.write("title 특정 문자 변경  "+title.replace('a','b') + br);
+	document.write("title 특정 문자 위치  "+title.indexOf('SCRIPT') + br);
+	document.write("title 특정 위치 문자  "+title.charAt(0) + br);
+ 	
+	if(title.charAt(0) ==='o'){ // !=, ==, [===:타입,값 동일 비교]
+ 		document.write("<style>body {color:red;}</style>")
+ 	}else{
+ 		document.write("<style>body{color:blue;}</style>")
+ 	}
+	
+	document.write("값 비교(100=='100'):"+(100 == "100")+br);
+	document.write("값 비교(100==='100'):"+(100 === "100")+br);
+	
+	//숫자, 문자열, 논리값, undefined, 함수(내장+사용자), 객체(내장+사용자)
+/* 	class Student{
+		int id;
+		String name;
+		Student(int id, String name){...}
+		toString(){id, name 출력}
+	}
+	Studemt st = new Student(1000,"홍길동"); */
+	//==> java 문법
+	
+	var mystu = {
+		id:1000,
+		name:"홍길동", 
+		toString:function(){ return this.id+"-"+this.name; }	//자바스크립트는 문장입력할 때 엔터를 치면 ;로 인식
+	}; //==>javascript 문법
+	document.write(typeof mystu + br);
+	document.write(mystu + br);
+	
+	
+</script>
+
+</head>
+<body>
+<h1>브라우저 출력</h1>
+<h1>100+200</h1>
+</body>
+</html>

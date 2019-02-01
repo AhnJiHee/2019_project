@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var idlist = ["java", 'oracle', 'script', 'servlet'];
+window.onload = function(){
+	var id = document.getElementById("id");
+	var pw1 = document.getElementById("pw1");	
+	var pw2 = document.getElementById("pw2");
+	var result = document.getElementById("result");
+	var login = document.getElementById("btn");	
+	/* 고전 이벤트 모델 */
+	login.onclick = function(){
+		for(var i = 0; i < idlist.length; i++){
+			if(idlist[i] == id.value){
+				if(pw1.value == pw2.value){
+					inform = "정상사용자입니다.";
+				}else{
+					inform = "암호 확인하세요.";
+				}
+				break;
+			}
+			else{
+				inform = "아이디리스트에 없습니다.";
+			}
+		}
+		result.innerHTML = inform;
+	}
+}
+
+<!--표준 이벤트 모델
+ 	login.addEventListener('click', function(){
+		for(var i = 0; i < idlist.length; i++){
+			if(idlist[i] == id.value){//id 찾았으면
+				if(pw1.value == pw2.value){//암호일치
+					inform = "정상사용자입니다.";
+				}else{//암호불일치
+					inform = "암호 확인하세요.";
+				}
+				break;
+			}
+			else{
+				inform = "아이디리스트에 없습니다.";
+			}
+		}
+		result.innerHTML = inform;
+	}, false); -->
+	
+</script>
+</head>
+<body>
+<form>
+ 아이디입력:	<input type=text id="id" value="aaa" ><br>
+ 암호입력:	<input type="password" id="pw1" ><br> 
+ 암호입력확인:	<input type="password" id="pw2" ><br> 
+ <input id="btn" type=button value="로그인">
+</form>
+ <h3 id="result"> 여기에 결과를 출력합니다. </h3>
+</body>
+</html>

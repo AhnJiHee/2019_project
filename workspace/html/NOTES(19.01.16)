@@ -1,0 +1,45 @@
+HTML FORM 태그
+
+1>입력 양식 제공 태그
+	입력도구 : 키보드, 마우스 입력 가능
+2>검색어, 로그인, id, pw입력 
+	==>다음 서버 입력 전송-서비스 제공	
+	
+	<form> 
+	아이디 입력<input type=text id="name">
+	</form>
+	
+input 
+	type : 입력형태 지정
+		text/password/checkbox/radio/file/hidden/submit/button 
+		+ (html5부터) data/color/range/email/phone/url
+		id : 입력내용저장이름
+		==>IE/크롬 다르다
+		
+	textarea : 여러라인입력
+	select : 목록 개수 한 화면에 보여주기 곤란한 경우
+	required : 필수입력
+	
+
+css : cascading style sheet
+
+<style type="text/css">
+태그명{css속성명:값; }
+id속성값{css속성명:값;}
+.class속성값{css속성명:값;}
+p{css속성명:값;}
+
+body{css속성명:값;} ==> 다바뀜
+*{css속성명:값;}==> 다바뀜
+
+</style>
+table > input{} ==> 자손태그
+table input{} ==> 자식태그 / table안의 input태그에
+input{} ==> 모든 input 태그에
+h1, h2, h3{} ==> h1 or h2 or h3 태그에
+
+
+
+
+
+

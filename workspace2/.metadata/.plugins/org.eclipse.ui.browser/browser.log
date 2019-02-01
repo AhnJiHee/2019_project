@@ -1,0 +1,33 @@
+
+1월 24, 2019 16:30:55.53 NEW SESSION
+1월 24, 2019 16:30:55.53 [5952:6076:0124/163055.528:ERROR:platform_sensor_reader_win.cc(242)] NOT IMPLEMENTED
+
+1월 31, 2019 13:37:50.35 NEW SESSION
+1월 31, 2019 13:37:50.35 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.35 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.35 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.35 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.35 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.35 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.35 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.36 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.36 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.36 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.36 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.36 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.36 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.36 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.36 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.36 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:37:50.36 [6644:2652:0131/133750.350:ERROR:in_progress_cache_impl.cc(203)] Cache is not initialized, cannot RetrieveEntry.
+1월 31, 2019 13:38:32.54 [6644:4528:0131/133832.543:ERROR:connection_factory_impl.cc(408)] Failed to connect to MCS endpoint with error -118
+1월 31, 2019 13:42:06.95 [5780:3208:0131/134206.953:ERROR:connection_factory_impl.cc(408)] Failed to connect to MCS endpoint with error -118
+1월 31, 2019 13:50:58.12 [6892:1900:0131/135058.123:ERROR:connection_factory_impl.cc(408)] Failed to connect to MCS endpoint with error -118
+1월 31, 2019 14:47:36.95 [7124:6572:0131/144736.951:ERROR:connection_factory_impl.cc(408)] Failed to connect to MCS endpoint with error -118
+1월 31, 2019 14:51:22.11 [7124:7128:0131/145122.117:ERROR:platform_sensor_reader_win.cc(242)] NOT IMPLEMENTED
+1월 31, 2019 14:51:23.51 [7124:7128:0131/145123.509:ERROR:platform_sensor_reader_win.cc(242)] NOT IMPLEMENTED
+1월 31, 2019 16:31:56.55 [7000:3336:0131/163156.555:ERROR:connection_factory_impl.cc(408)] Failed to connect to MCS endpoint with error -118
+1월 31, 2019 16:52:39.46 [1008:7608:0131/165239.469:ERROR:connection_factory_impl.cc(408)] Failed to connect to MCS endpoint with error -118
+
+1월 31, 2019 17:02:03.87 NEW SESSION
+1월 31, 2019 17:02:03.87 [7004:4960:0131/170203.867:ERROR:connection_factory_impl.cc(408)] Failed to connect to MCS endpoint with error -118

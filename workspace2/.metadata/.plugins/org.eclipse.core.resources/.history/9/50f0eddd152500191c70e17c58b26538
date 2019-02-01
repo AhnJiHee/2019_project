@@ -1,0 +1,80 @@
+<%@page import="dao.MemberDAO"%>
+<%@page import="vo.BoardVO"%>
+<%@page import="dao.BoardDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시물 보기</title>
+
+<style>
+table{text-align: center; margin: auto; border: 1px solid purple;}
+</style>
+
+</head>
+<body>
+<%
+int seq = Integer.parseInt(request.getParameter("boardseq"));
+session.setAttribute("boardseq", seq);
+BoardDAO dao = new BoardDAO();
+BoardVO vo = dao.getBoardDetail(seq);
+int boardviewcount = vo.getBoardviewcount();
+
+String boardtitle = vo.getBoardtitle();
+String boardcontents = vo.getBoardcontents();
+String boardwriter = vo.getBoardwriter();
+String boardtime = vo.getBoardtime();
+session.setAttribute("boardvo", vo);
+
+dao.viewCount(seq);
+%>
+
+<table border="2px">
+
+<tr>
+<td>게시물 번호</td><td><%=seq%></td>
+</tr>
+<tr>
+<td>제목</td><td><%=boardtitle%></td>
+</tr>
+<tr>
+<td height = 300>내용</td><td width = 500><%=boardcontents%></td>
+</tr>
+<tr>
+<td>작성자</td><td><%=boardwriter%></td>
+</tr>
+<tr>
+<td>작성 시간</td><td><%=boardtime%></td>
+</tr>
+<tr>
+<td>조회수</td><td><%=boardviewcount%></td>
+</tr>
+</table>
+<table>
+<tr>
+	<td>
+		<form action="boardupdate.jsp">
+		<input type=submit value="수정">
+		</form>
+	</td>
+	<td>
+		<form action="boarddetailsdelete.jsp">
+		<input type=submit value="삭제">
+		</form>
+	</td>
+	<td>
+		<form action="boardlist.jsp">
+		<input type=submit value="목록으로 돌아가기">
+		</form>
+	</td>
+</tr>
+</table>
+
+<!-- 로그인 상태 확인 태그-->
+<%! MemberDAO dao2 = new MemberDAO(); %>
+<input type="hidden" id="status" value=<%=dao2.loginstatus(session)%>>
+
+</body>
+</html>

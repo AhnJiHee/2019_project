@@ -1,0 +1,22 @@
+<%@page import="dao.MemberDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 확인</title>
+</head>
+<body>
+<%
+MemberDAO dao = new MemberDAO();
+String id = request.getParameter("id");
+session.setAttribute("id", id);
+String password = request.getParameter("pw");
+session.setAttribute("password", password);
+String result = dao.ifmember(id, password);
+out.println(result);
+%>
+
+</body>
+</html>
