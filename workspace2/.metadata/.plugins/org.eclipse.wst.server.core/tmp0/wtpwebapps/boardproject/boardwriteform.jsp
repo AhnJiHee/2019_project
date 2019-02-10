@@ -8,12 +8,13 @@
 <title>게시물 입력</title>
 
 <style>
-table{text-align: center; margin: auto; border: 1px solid purple;}
+	.center{text-align: center; margin: auto;}
+	table.list{text-align: center; margin: auto; border: 3px solid purple;}
 </style>
 
 </head>
 <body>
-<table>
+<table class="list">
 <form action="boardwriteresult.jsp">
 <tr>
 <td><input type=text name="boardtitle" placeholder = "제목을 입력하세요"></td>
@@ -28,7 +29,7 @@ table{text-align: center; margin: auto; border: 1px solid purple;}
 </tr>
 </form>
 </table>
-<form action="boardlist.jsp"><input type=submit value="목록으로 돌아가기"></form>
+<form class="center" action="mainpage.jsp"><input type=submit value="메인으로 돌아가기"></form>
 
 
 

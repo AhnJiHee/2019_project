@@ -20,16 +20,4 @@
     <servlet-name>LoginSessionServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
-    <description></description>
-    <display-name>MainServlet</display-name>
-    <servlet-name>MainServlet</servlet-name>
-    <servlet-class>main.MainServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MainServlet</servlet-name>
-    <url-pattern>/main</url-pattern>
-  </servlet-mapping>
-  
 </web-app>

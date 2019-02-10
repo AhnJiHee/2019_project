@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메인 화면</title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#login").click(function() {
+		var id=$("#id").val();
+		var pw=$("#pw").val();
+		var param="id="+id+"&pw="+pw;
+		$.ajax({
+			type: "POST",
+			url: "loginstatus.jsp",
+			data: param,
+			success: function(data) {
+				$("#div1").html(data);
+			}
+		});
+		return false;
+	});
+});
+</script>
+</head>
+<body>
+
+<div id="div1">
+<table border="1">
+	<tr>
+		<td><input type=text id="id" name="id" placeholder="아이디"></td>
+		<td rowspan=2><input type="button" id="login" value="로그인"></td>
+	</tr>
+	<tr>
+		<td><input type=text id="pw"name="pw" placeholder="비밀번호"></td>
+	</tr>
+</table>
+</div>
+<a href = "signin.jsp">회원가입 하러 가기</a>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메인 페이지</title>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#toboard").click(function() {
+		$("#main").html(null);
+		var page = 1;
+		var param="page="+page;
+		$.ajax({
+			type: "get",
+			url: "boardlist.jsp",
+			data: param,
+			success: function(data) {
+				$("#main").html(data);
+			}
+		});
+	}); // toboard end
+	$("#tores").click(function() {
+		$("#main").html(null);
+		var page = 1;
+		var param="page="+page;
+		$.ajax({
+			type: "get",
+			url: "restaurantlist.jsp",
+			data: param,
+			success: function(data) {
+				$("#main").html(data);
+			}
+		});
+	}); // tores end
+}); // ready end
+
+</script>
+
+</head>
+<body>
+
+<div id="banner"></div>
+
+<div id="login">
+	<% if ( session.getAttribute("id") == null) { %>
+	<jsp:include page="login.jsp"></jsp:include>
+	<% } else { %>
+	<jsp:include page="loginstatus.jsp"></jsp:include>
+	<% } %>
+</div>
+
+<div id="menu">
+	<input type="button" id="toboard" value="게시판으로 가기">
+	<input type="button" id="tores" value="심야식당 보러 가기">
+</div>
+
+<div id="main">
+	<jsp:include page="boardlist.jsp"></jsp:include>
+</div>
+	
+
+</body>
+</html>

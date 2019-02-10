@@ -50,6 +50,6 @@ try {
 %>
 
 <h1> <%=result%></h1>
-<a href = boardlist.jsp>게시판으로 이동</a>
+<a href = mainpage.jsp>메인으로 이동</a>
 </body>
 </html>

@@ -9,7 +9,8 @@
 <title>수정 완료</title>
 
 <style>
-table{text-align: center; margin: auto; border: 1px solid purple;}
+	.center{text-align: center; margin: auto;}
+	table.list{text-align: center; margin: auto; border: 3px solid purple;}
 </style>
 
 </head>
@@ -28,7 +29,7 @@ dao.updateBoard(seq, newtitle, newcontents);
 
 %>
 
-<table border="2px">
+<table class="list" border="2px">
 <tr>
 	<td>제목</td><td><%=newtitle %></td>
 </tr>
@@ -41,7 +42,7 @@ dao.updateBoard(seq, newtitle, newcontents);
 </table>
 
 <h1> 수정되었습니다. </h1>
-<form action="boardlist.jsp">
+<form class="center" action="boardlist.jsp">
 <input type=submit value="목록으로 돌아가기">
 </form>
 

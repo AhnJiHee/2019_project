@@ -1,0 +1,62 @@
+<%@page import="dao.MemberDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 화면</title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#login").click(function() {
+		var id=$("#id").val();
+		var pw=$("#pw").val();
+		var param="id="+id+"&pw="+pw;
+		$.ajax({
+			type: "get",
+			url: "login",
+			data: param,
+			success: function(data) {
+				$("#div1").html(data);
+			}
+		});
+	}); // login end
+	if ( $("#status") == "on" ) {
+		$.ajax({
+			type: "get",
+			url: "login",
+			data: param,
+			success: function(data) {
+				$("#div1").html(data);
+			}
+		});
+	}
+	
+}); // ready end
+</script>
+</head>
+<body>
+
+<div id="div1">
+	<!-- 로그인 창 -->
+	<table border="1">
+		<tr>
+			<td><input type=text id="id" name="id" placeholder="아이디"></td>
+			<td rowspan=2><input type="button" id="login" value="로그인"></td>
+		</tr>
+		<tr>
+			<td><input type=text id="pw" name="pw" placeholder="비밀번호"></td>
+		</tr>
+	</table> 
+<a href = "signin.jsp">회원가입 하러 가기</a>
+</div>
+
+<!-- 로그인 상태 확인 태그-->
+<%! MemberDAO dao2 = new MemberDAO(); %>
+<input type="hidden" id="status" value=<%=dao2.loginstatus(session)%>>
+<a> <%=session.getAttribute("id") %> </a>
+<a><%=dao2.loginstatus(session) %></a>
+
+</body>
+</html>

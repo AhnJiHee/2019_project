@@ -15,7 +15,7 @@
 <body>
 <%
 session.invalidate();
-response.sendRedirect("loginstatus.jsp");
+response.sendRedirect("mainpage.jsp");
 %>
 
 

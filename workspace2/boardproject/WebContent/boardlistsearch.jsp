@@ -10,24 +10,14 @@
 <title>게시물 검색</title>
 
 <style>
-table{text-align: center; margin: auto; border: 1px solid purple;}
+	.center{text-align: center; margin: auto;}
+	table.list{text-align: center; margin: auto; border: 3px solid purple;}
 </style>
-
-<!-- Jquery 작성부 -->
-<script src="jquery-3.2.1.min.js"></script>
-<script>
-$(document).ready(function(){
-	$("#write").on('click', function(){
-		location.href="boardwriteform.jsp"
-	}); // onclick end
-}); // ready end
-</script>
-</head>
 
 <body>
 <h1 align = center>검색된 내용입니다.</h1>
 
-<table border="2px">
+<table class="list" border="2px">
 <tr>
 <td>번호</td><td width="250">제목</td><td>작성자</td><td>작성시간</td><td>조회수</td>
 </tr>
@@ -49,11 +39,11 @@ $(document).ready(function(){
 %>
 </table> 
 
-<table>
+<table class="center"'>
 <tr>
 	<td>
-		<form action="boardlist.jsp">
-		<input type=submit value="목록으로 돌아가기">
+		<form action="mainpage.jsp">
+		<input type=submit value="메인으로 돌아가기">
 		</form>
 	</td>
 </tr>

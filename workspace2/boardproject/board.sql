@@ -72,5 +72,19 @@ where X.rnum >= 11
  
  
  
+ create table restaurant (
+	province varchar2(20),
+	address varchar2(100),
+	closetime varchar2(100),
+	name varchar2(100),
+	tag varchar2(20),
+	keyword varchar2(100)
+)
+
+insert into restaurant values ('광진구', '구의동 51-8', '24', '찬희네 집', '한식', '김치볶음밥')
+insert into restaurant values ('강남구', ' 테헤란로 212', '22', '멀티캠퍼스', '뷔페', '자율배식')
+select province 구, address 주소, closetime 마감시간, name 가게명, tag 종목, keyword 키워드
+	from restaurant order by 가게명
+ 
  
  

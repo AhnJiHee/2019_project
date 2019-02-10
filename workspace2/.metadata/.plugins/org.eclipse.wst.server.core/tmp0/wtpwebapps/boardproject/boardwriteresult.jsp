@@ -7,12 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 저장 결과</title>
+</head>
 
 <style>
-table{text-align: center; margin: auto; border: 1px solid purple;}
+	.center{text-align: center; margin: auto;}
+	table.list{text-align: center; margin: auto; border: 3px solid purple;}
 </style>
 
-</head>
 <body>
 
 <%
@@ -25,7 +26,7 @@ dao.insertBoard(vo);
 
 %>
 
-<table border="2px">
+<table class="list" border="2px">
 <tr>
 <td>제목</td><td><%=boardtitle %></td>
 </tr>
@@ -39,8 +40,8 @@ dao.insertBoard(vo);
 
 <h1 align="center"> 저장되었습니다. </h1>
 
-<form action="boardlist.jsp">
-<input type=submit value="목록으로 돌아가기">
+<form class="center" action="mainpage.jsp">
+<input type=submit value="메인으로 돌아가기">
 </form>
 
 </body>

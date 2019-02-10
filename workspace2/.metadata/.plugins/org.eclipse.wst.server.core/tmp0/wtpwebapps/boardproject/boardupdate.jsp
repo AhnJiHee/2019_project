@@ -9,7 +9,8 @@
 <title>게시물 수정</title>
 
 <style>
-table{text-align: center; margin: auto; border: 1px solid purple;}
+	.center{text-align: center; margin: auto;}
+	table.list{text-align: center; margin: auto; border: 3px solid purple;}
 </style>
 
 </head>
@@ -26,7 +27,7 @@ String boardwriter = vo.getBoardwriter();
 String boardtime = vo.getBoardtime();
 %>
 
-<table border="2px">
+<table class="list" border="2px">
 <form action="boardupdateresult.jsp">
 <tr>
 <td>게시물 번호</td><td><%=seq%></td>
@@ -50,15 +51,15 @@ String boardtime = vo.getBoardtime();
 </tr>
 </table>
 
-<table>
+<table class="center">
 <tr>
 	<td>
 		<input type=submit value="저장">
 		</form>
 	</td>
 	<td>
-		<form action="boardlist.jsp">
-		<input type=submit value="목록으로 돌아가기">
+		<form action="mainpage.jsp">
+		<input type=submit value="메인으로 돌아가기">
 		</form>
 	</td>
 </tr>
