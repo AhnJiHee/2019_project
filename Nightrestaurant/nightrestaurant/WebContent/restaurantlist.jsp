@@ -90,7 +90,6 @@ RestaurantDAO dao = new RestaurantDAO();
 	
 				ArrayList<RestaurantVO> list = null;
 				int pagenumb = 1; // 기본으로 보여줄 페이지
-				int each = 10; // 페이지 당 보여주고 싶은 음식점 수
 				
 				// 페이지 번호 호출
 				if(request.getParameter("page") != null){
@@ -99,9 +98,9 @@ RestaurantDAO dao = new RestaurantDAO();
 				
 				// 구, 마감시간 호출
 				if (request.getParameter("province") !=null && request.getParameter("closetime") !=null) {
-					list = dao.getSelectedList(request, pagenumb, each);
+					list = dao.getSelectedList(request, pagenumb);
 				} else {
-					list = dao.getRestaurantList(pagenumb, each);
+					list = dao.getRestaurantList(pagenumb);
 				}
 				
 				// 식당 리스트 출력
@@ -122,10 +121,10 @@ RestaurantDAO dao = new RestaurantDAO();
 		<tr>
 			<%
 			int totalcont = dao.getTotalRestaurants();
-			if (totalcont % each ==0){
-				pagenumb = totalcont / each;
+			if (totalcont % RestaurantDAO.EACH ==0){
+				pagenumb = totalcont / RestaurantDAO.EACH;
 			} else {
-				pagenumb = totalcont / each +1;
+				pagenumb = totalcont / RestaurantDAO.EACH +1;
 			}
 			for (int i =1 ; i <= pagenumb; i ++){
 			out.print("<td><a href='main?branch=2&page="+i+"'>"+i+"</a></td>");

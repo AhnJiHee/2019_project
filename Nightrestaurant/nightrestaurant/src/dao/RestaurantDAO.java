@@ -14,7 +14,7 @@ public class RestaurantDAO {
 	public static final int EACH = 5;
 
 	// 선택 지역 음식점 목록 조회 메소드
-		public ArrayList<RestaurantVO> getSelectedList(HttpServletRequest request, int pagenum, int each){
+		public ArrayList<RestaurantVO> getSelectedList(HttpServletRequest request, int pagenum){
 			ArrayList<RestaurantVO> list = new ArrayList<RestaurantVO>();
 			
 			try {
@@ -27,8 +27,8 @@ public class RestaurantDAO {
 						 + " where X.r >=? and province=? and closetime=?";
 		
 				PreparedStatement pt = con.prepareStatement(sql);
-				int start = (pagenum-1)*each +1;
-				int end = pagenum*each;		
+				int start = (pagenum-1)*EACH +1;
+				int end = pagenum*EACH;		
 				pt.setInt(2, start);
 				pt.setInt(1, end);			
 				pt.setString(3, request.getParameter("province"));
@@ -56,7 +56,7 @@ public class RestaurantDAO {
 		
 		// 목록 페이징 메소드
 		// 보여주고 싶은 페이지 번호 / 페이지마다 보여주려는 식당 개수
-		public ArrayList<RestaurantVO> getRestaurantList(int pagenum, int each){
+		public ArrayList<RestaurantVO> getRestaurantList(int pagenum){
 			ArrayList<RestaurantVO> list = new ArrayList<RestaurantVO>();
 			
 			try {
@@ -68,8 +68,8 @@ public class RestaurantDAO {
 						 + " where rownum <= ?) X"
 						 + " where X.r >=?";
 				PreparedStatement pt = con.prepareStatement(sql);
-				int start = (pagenum-1)*each +1;
-				int end = pagenum*each;		
+				int start = (pagenum-1)*EACH +1;
+				int end = pagenum*EACH;		
 				pt.setInt(2, start);
 				pt.setInt(1, end);			
 				ResultSet rs = pt.executeQuery();	
