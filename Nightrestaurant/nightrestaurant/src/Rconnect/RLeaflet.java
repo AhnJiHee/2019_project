@@ -14,15 +14,17 @@ public class RLeaflet {
             r.eval("library(dplyr)");
             r.eval("library(htmltools)");
             r.eval("library(ggmap)");
-            r.eval("register_google(key=\"AIzaSyBzXGGVVyG111us_Gw86i3yTdxumfo4SLA\")");
+            r.eval("register_google(key='AIzaSyBzXGGVVyG111us_Gw86i3yTdxumfo4SLA')");
             r.eval("seoul_lonlat = unlist(geocode('seoul', source='google'))");
             r.eval("names(seoul_lonlat) <- NULL");
-            r.eval("setwd('C:/Rstudy')");
+            r.eval("setwd('C:/Rstudy2')");
             r.eval("data <- read.csv('pagenew2.csv', stringsAsFactors = FALSE)");
             r.eval("msg <- paste(data$repl_v3, data$new_v,data$repl_cate,sep='  ')");
-            r.eval("leaflet(data) %>% setView(lng = seoul_lonlat[1], lat = seoul_lonlat[2], zoom = 11) %>% addTiles() %>% addCircles(lng = ~mk_lon, lat=~mk_lat, popup = ~msg)");
+            r.eval("map5<-leaflet(data) %>% setView(lng = seoul_lonlat[1], lat = seoul_lonlat[2], zoom = 11) %>% addTiles() %>% addCircles(lng = ~mk_lon, lat=~mk_lat, popup = ~msg)");
             String fileName = path + "/index.html";
             String libPath = path + "/lib";
+            System.out.println(fileName);
+            System.out.println(libPath);
             r.eval("save_html(map5,'" + fileName + "', libdir='" + libPath + "')");
             retStr = r.eval("'index.html'").asString();
          } catch (Exception e) {

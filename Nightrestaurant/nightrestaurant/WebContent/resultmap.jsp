@@ -9,17 +9,6 @@
 </head>
 <body>
 <h1>R 시각화 결과 표현하기</h1>
-<hr>
-<%
-if(request.getAttribute("img_content") != null) {      
-   byte src[] = (byte[])request.getAttribute("img_content");
-%>
-   <img src="
-      data:image/jpg;base64, <%= Base64.getEncoder().encodeToString(src) %>"
-      width="400" height="300">
-<%
-} 
-%>   
-
+<iframe src="${leafletChartName }" width="100%" height="500" seamless></iframe>
 </body>
 </html>

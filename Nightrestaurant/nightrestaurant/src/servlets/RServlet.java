@@ -23,8 +23,10 @@ public class RServlet extends HttpServlet {
          File f = new File(real_path+"/leafletchart2");
          if(!f.exists()) f.mkdir();
          String result = rc.returnLeaflet2(real_path+"/leafletchart2");
-         request.setAttribute("leafletChartName", "http://localhost:8081/redu/leafletchart2/"+result);   
+         request.setAttribute("leafletChartName", "http://localhost:8081/nightrestaurant/leafletchart2/"+result);   
       }
+      
+      request.getRequestDispatcher("/resultmap.jsp").forward(request, response);
    }
 
    

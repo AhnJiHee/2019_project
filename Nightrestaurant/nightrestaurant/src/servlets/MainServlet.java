@@ -22,6 +22,7 @@ public class MainServlet extends HttpServlet {
 		String html = "<div class = 'banner_div'></div>";
 		out.println(html);
 		
+		
 		// 로그인+네비게이터 출력부분
 		request.getRequestDispatcher("lognavi.jsp").include(request, response);
 		
@@ -30,6 +31,9 @@ public class MainServlet extends HttpServlet {
 			request.getRequestDispatcher("boardlist.jsp").include(request, response);
 		} else if ( request.getParameter("branch").equals("2")) {
 			request.getRequestDispatcher("restaurantlist.jsp").include(request, response);
+		}
+		else if(request.getParameter("branch").isEmpty()) {
+			request.getRequestDispatcher("/R").include(request, response);
 		}
 	}
 
