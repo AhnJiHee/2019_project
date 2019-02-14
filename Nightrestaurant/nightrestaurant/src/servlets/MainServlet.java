@@ -32,8 +32,8 @@ public class MainServlet extends HttpServlet {
 		} else if ( request.getParameter("branch").equals("2")) {
 			request.getRequestDispatcher("restaurantlist.jsp").include(request, response);
 		}
-		else if(request.getParameter("branch").isEmpty()) {
-			request.getRequestDispatcher("/R").include(request, response);
+		else if(request.getParameter("branch").equals("3")){
+			request.getRequestDispatcher("R").include(request, response);
 		}
 	}
 

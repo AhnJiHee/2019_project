@@ -52,11 +52,10 @@
 			<% 
 					BoardDAO dao = new BoardDAO(); 
 					int pagenumb = 1; // 기본으로 보여줄 페이지
-					int each = 5; // 페이지 당 보여주고 싶은 게시물 수
 					if(request.getParameter("page") != null){
 						pagenumb = Integer.parseInt(request.getParameter("page"));
 					}
-					ArrayList<BoardVO> list = dao.getBoardList(pagenumb, each);
+					ArrayList<BoardVO> list = dao.getBoardList(pagenumb);
 					for (int i = 0; i < list.size(); i++) {
 					BoardVO vo = list.get(i);
 					out.println ("<tr><td>" + vo.getBoardseq() + "</td><td>"
@@ -91,10 +90,10 @@
 		<form action = "main">
 			<%
 			int totalcont = dao.getTotalContents();
-			if (totalcont % each ==0){
-				pagenumb = totalcont / each;
+			if (totalcont % BoardDAO.EACH ==0){
+				pagenumb = totalcont / BoardDAO.EACH;
 			} else {
-				pagenumb = totalcont / each +1;
+				pagenumb = totalcont / BoardDAO.EACH +1;
 			}
 			for (int i =1 ; i <= pagenumb; i ++){
 			out.print("<td><a href='main?branch=1&page="+i+"'>"+i+"</a></td>");

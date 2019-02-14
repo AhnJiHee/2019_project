@@ -14,7 +14,7 @@ public class RLeaflet {
             r.eval("library(dplyr)");
             r.eval("library(htmltools)");
             r.eval("library(ggmap)");
-            r.eval("register_google(key='AIzaSyBzXGGVVyG111us_Gw86i3yTdxumfo4SLA')");
+            r.eval("register_google(key=\"AIzaSyBzXGGVVyG111us_Gw86i3yTdxumfo4SLA\")");
             r.eval("seoul_lonlat = unlist(geocode('seoul', source='google'))");
             r.eval("names(seoul_lonlat) <- NULL");
             r.eval("setwd('C:/Rstudy2')");

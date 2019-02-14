@@ -14,19 +14,19 @@ import Rconnect.RLeaflet;
 public class RServlet extends HttpServlet {
        
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String action = "leaflet2";
-      if(action.equals("leaflet2")) {
-         RLeaflet rc = new RLeaflet();      
-         String real_path = request.getSession().getServletContext().getRealPath("/");
-         System.out.println(real_path);
-          real_path = real_path.replace("\\", "/");
-         File f = new File(real_path+"/leafletchart2");
-         if(!f.exists()) f.mkdir();
-         String result = rc.returnLeaflet2(real_path+"/leafletchart2");
-         request.setAttribute("leafletChartName", "http://localhost:8081/nightrestaurant/leafletchart2/"+result);   
-      }
+      //String action = "leaflet2";
+      //if(action.equals("leaflet2")) {
+        RLeaflet rc = new RLeaflet();      
+        String real_path = request.getSession().getServletContext().getRealPath("/");
+        System.out.println(real_path);
+         real_path = real_path.replace("\\", "/");
+        File f = new File(real_path+"/leafletchart2");
+        if(!f.exists()) f.mkdir();
+        String result = rc.returnLeaflet2(real_path+"/leafletchart2");
+        request.setAttribute("leafletChartName", "http://localhost:8081/nightrestaurant/leafletchart2/"+result);   
+      //}
       
-      request.getRequestDispatcher("/resultmap.jsp").forward(request, response);
+      request.getRequestDispatcher("/resultmap.jsp").include(request, response);
    }
 
    

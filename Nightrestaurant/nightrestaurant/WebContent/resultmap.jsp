@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>R 시각화 결과 표현하기</h1>
-<iframe src="${leafletChartName }" width="100%" height="500" seamless></iframe>
+<!-- <h1>R 시각화 결과 표현하기</h1> -->
+<iframe src="${leafletChartName }" width="50%" height="400" seamless></iframe>
 </body>
 </html>

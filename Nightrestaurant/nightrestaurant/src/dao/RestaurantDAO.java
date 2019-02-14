@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import vo.RestaurantVO;
 
 public class RestaurantDAO {
+	public static final int EACH = 5;
 
 	// 선택 지역 음식점 목록 조회 메소드
 		public ArrayList<RestaurantVO> getSelectedList(HttpServletRequest request, int pagenum, int each){

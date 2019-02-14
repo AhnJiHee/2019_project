@@ -11,6 +11,8 @@ import vo.MemberVO;
 
 public class BoardDAO {
 	
+	public static final int EACH = 5;
+	
 	// 전체 게시물 목록 조회 메소드
 	public ArrayList<BoardVO> getBoardList(){
 		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
@@ -43,7 +45,7 @@ public class BoardDAO {
 	
 	// 게시물 페이징 메소드
 	// 보여주고 싶은 페이지 번호 / 페이지마다 보여주려는 게시물 개수
-	public ArrayList<BoardVO> getBoardList(int pagenum, int each){
+	public ArrayList<BoardVO> getBoardList(int pagenum){
 		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
 		
 		try {
@@ -56,8 +58,8 @@ public class BoardDAO {
 					 + " where rownum <= ?) X"
 					 + " where X.r >=?";
 			PreparedStatement pt = con.prepareStatement(sql);
-			int start = (pagenum-1)*each +1;
-			int end = pagenum*each;		
+			int start = (pagenum-1)*EACH +1;
+			int end = pagenum*EACH;		
 			pt.setInt(2, start);
 			pt.setInt(1, end);			
 			ResultSet rs = pt.executeQuery();	
