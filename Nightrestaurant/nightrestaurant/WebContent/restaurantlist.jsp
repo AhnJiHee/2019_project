@@ -17,10 +17,28 @@
 			if($("#province option:selected").val().length<1) {
 				alert("지역을 선택하세요.")
 			}
+			
 			if($("#closetime option:selected").val().length<1) {
 				alert("시간대를 선택하세요.")
 			}
-		})
+			
+			
+			var province=$("#province option:selected").val();
+			var closetime=$("#closetime option:selected").val();
+			var param="province="+province+"&closetime="+closetime;
+			$.ajax({
+				type: "POST",
+				url: "restaurantlist.jsp",
+				data: param,
+				success: function(data) {
+					$("#div4").html(data);
+				}
+			});
+			return false;
+			
+			
+		}) //search end
+		
 	}); // ready end
 		
 </script>

@@ -25,7 +25,8 @@ public class BoardVO {
 		this.boardtitle = boardtitle;
 		this.boardwriter = boardwriter;
 		this.boardtime = boardtime;
-	}
+	}	
+
 
 	public BoardVO(int boardseq, String boardtitle, String boardcontents, String boardwriter, String boardtime,
 			int boardviewcount) {
