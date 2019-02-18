@@ -32,7 +32,7 @@ public class MainServlet extends HttpServlet {
 		} else if ( request.getParameter("branch").equals("2")) {
 			request.getRequestDispatcher("restaurantlist.jsp").include(request, response);
 		}
-		else if(request.getParameter("branch").equals("3")){
+		else if(request.getParameter("branch").length()==0){
 			request.getRequestDispatcher("R").include(request, response);
 		}
 	}
