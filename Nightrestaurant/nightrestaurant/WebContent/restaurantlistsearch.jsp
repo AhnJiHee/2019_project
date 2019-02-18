@@ -57,6 +57,7 @@ RestaurantDAO dao = new RestaurantDAO();
 		<!-- 제목 -->
 		<h1>음식점 목록입니다.</h1>
 		
+		
 		<!-- selection form -->
 		<form action = "main">
 			<!-- 구 선택 select-->

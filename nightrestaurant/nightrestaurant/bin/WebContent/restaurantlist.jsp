@@ -127,9 +127,11 @@ RestaurantDAO dao = new RestaurantDAO();
 			} else {
 				pagenumb = totalcont / each +1;
 			}
-			for (int i =1 ; i <= pagenumb; i ++){
-			out.print("<td><a href='main?branch=2&page="+i+"'>"+i+"</a></td>");
-			}
+			int block = Integer.parseInt(request.getParameter("block"));
+			for (int i = block * 10+1 ; i < block * 11; i++) {
+				out.print("<td><a href='main?branch=2&block="+block+"&page="+i+"'>"+i+"</a></td>");	
+			};
+			out.println("<td><a href='main?branch=2&block="+(block+1)+"</td>");
 			%>
 		</tr>
 	</table>
