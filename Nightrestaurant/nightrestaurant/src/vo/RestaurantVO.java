@@ -8,6 +8,8 @@ public class RestaurantVO {
 	String name;
 	String tag;
 	String keyword;
+	String lon;
+	String lat;
 	
 	public RestaurantVO() {
 	}
@@ -26,6 +28,18 @@ public class RestaurantVO {
 		this.name = name;
 		this.tag = tag;
 		this.keyword = keyword;
+	}
+	
+	public RestaurantVO(String province, String address, String closetime, String name, String tag, String keyword,String lon, String lat) {
+		this.province = province;
+		this.address = address;
+		this.closetime = closetime;
+		this.name = name;
+		this.tag = tag;
+		this.keyword = keyword;
+		this.lon = lon;
+		this.lat = lat;
+	
 	}
 
 	public String getProvince() {
@@ -75,11 +89,30 @@ public class RestaurantVO {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	
+
+	public String getLon() {
+		return lon;
+	}
+
+	public void setLon(String lon) {
+		this.lon = lon;
+	}
+
+	public String getLat() {
+		return lat;
+	}
+
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
 
 	public String toString() {
 		return "RestaurantVO [province=" + province + ", address=" + address + ", closetime=" + closetime + ", name="
 				+ name + ", tag=" + tag + ", keyword=" + keyword + "]";
 	}
+	
+	
 
 	
 

@@ -23,8 +23,8 @@ public class RestaurantDAO {
 				String sql = "select X.r, X.province 구, X.address 주소, X.closetime 마감시간, X.name 가게명, X.tag 종목, X.keyword 키워드"
 						 + " from (select rownum r, A.province, A.address, A.closetime, A.name, A.tag, A.keyword"
 						 + " from (select * from restaurant order by name) A"
-						 + " where rownum <= ?) X"
-						 + " where X.r >=? and province=? and closetime=?";
+						 + " ) X"
+						 + " where rownum <= ? and X.r >=? and province=? and closetime=?";
 		
 				PreparedStatement pt = con.prepareStatement(sql);
 				int start = (pagenum-1)*EACH +1;
@@ -129,5 +129,67 @@ public class RestaurantDAO {
 			}
 			return count;
 		}
+		
+		public ArrayList<String> getLonList(){
+			ArrayList<String> list = new ArrayList<String>();
+			
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+				String sql = "select lon from restaurant";
+				PreparedStatement pt = con.prepareStatement(sql);
+								
+				ResultSet rs = pt.executeQuery();	
+				while(rs.next()){
+					/*RestaurantVO vo = new RestaurantVO();
+					vo.setProvince((rs.getString("province")));
+					vo.setAddress((rs.getString("address")));
+					vo.setClosetime((rs.getString("closetime")));
+					vo.setName((rs.getString("name")));
+					vo.setTag((rs.getString("tag")));
+					vo.setKeyword((rs.getString("keyword")));
+					vo.setLon(rs.getString("lon"));
+					vo.setLat(rs.getString("lat"));
+					list.add(rs);*/
+					list.add(rs.getString("lon"));
+				}
+				 
+				con.close();
+			}catch(Exception e) {
+					e.printStackTrace();
+			}
+			return list;
+		} 
+		
+		public ArrayList<String> getLatList(){
+			ArrayList<String> list = new ArrayList<String>();
+			
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+				String sql = "select lat from restaurant";
+				PreparedStatement pt = con.prepareStatement(sql);
+								
+				ResultSet rs = pt.executeQuery();	
+				while(rs.next()){
+					/*RestaurantVO vo = new RestaurantVO();
+					vo.setProvince((rs.getString("province")));
+					vo.setAddress((rs.getString("address")));
+					vo.setClosetime((rs.getString("closetime")));
+					vo.setName((rs.getString("name")));
+					vo.setTag((rs.getString("tag")));
+					vo.setKeyword((rs.getString("keyword")));
+					vo.setLon(rs.getString("lon"));
+					vo.setLat(rs.getString("lat"));
+					list.add(rs);*/
+					list.add(rs.getString("lat"));
+				}
+				 
+				con.close();
+			}catch(Exception e) {
+					e.printStackTrace();
+			}
+			return list;
+		} 
 	
 }
