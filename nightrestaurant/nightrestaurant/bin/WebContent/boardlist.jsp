@@ -56,7 +56,7 @@
 					if(request.getParameter("page") != null){
 						pagenumb = Integer.parseInt(request.getParameter("page"));
 					}
-					ArrayList<BoardVO> list = dao.getBoardList(pagenumb, each);
+					ArrayList<BoardVO> list = dao.getBoardList(pagenumb);
 					for (int i = 0; i < list.size(); i++) {
 					BoardVO vo = list.get(i);
 					out.println ("<tr><td>" + vo.getBoardseq() + "</td><td>"

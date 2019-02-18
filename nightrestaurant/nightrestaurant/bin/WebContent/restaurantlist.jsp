@@ -99,9 +99,9 @@ RestaurantDAO dao = new RestaurantDAO();
 				
 				// 구, 마감시간 호출
 				if (request.getParameter("province") !=null && request.getParameter("closetime") !=null) {
-					list = dao.getSelectedList(request, pagenumb, each);
+					list = dao.getSelectedList(request, pagenumb);
 				} else {
-					list = dao.getRestaurantList(pagenumb, each);
+					list = dao.getRestaurantList(pagenumb);
 				}
 				
 				// 식당 리스트 출력
