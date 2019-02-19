@@ -44,21 +44,46 @@
 </script>
 
 <style>
-	div div.list {
-		width: 250px;
-		height: 70%;
-		background-color: lightgray;
-		padding: 10px
-	}
-	div div table.restaurant {
-		width: 200px;
-		height: 100px;
-		text-align: center;
-		padding: 10px;
-	}
-	tr,td {
-		border: 1px;
-	}
+
+
+@font-face {
+	font-family: 'NanumSquareB';
+	src: url('fonts/NanumSquareB.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'NanumSquareR';
+	src: url('fonts/NanumSquareR.ttf') format('truetype');
+}
+
+div.list span {
+	font-family: NanumSquareB;
+	font-size: 1.5em;
+	color: red;
+}
+
+
+div div.list {
+	width: 250px;
+	height: 70%;
+	background-color: #98c593;
+	color: #2E2E2E;
+	padding: 10px;
+	-webkit-box-shadow: 0px 3px 11px 2px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 3px 11px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 3px 11px 2px rgba(0, 0, 0, 0.2);
+}
+
+div div table.restaurant {
+	width: 200px;
+	height: 100px;
+	text-align: center;
+	padding: 10px;
+}
+
+tr, td {
+	border: 1px;
+}
 </style>
 </head>
 <body>
@@ -78,14 +103,16 @@ RestaurantDAO dao = new RestaurantDAO();
 		<!-- selection form -->
 		<form action = "main">
 			<!-- 구 선택 select-->
-			<select id="province" name="province"> 
+			<select id="province" name="province" style = " float: left; width: 30%;"> 
 				<option value='' selected>구를 선택하세요</option>
 				<% for(int i = 0; i < province.length; i++) {
 					out.println("<option value='"+province[i]+"'>" + province[i] + "</option>");
 				}%>
 			</select>
 			<!-- 시간 선택 => 마감시간으로 전달 select-->
-			<select id="closetime" name="closetime"> 
+			<h3 style = " float: left; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+ 
+			<select id="closetime" name="closetime" style = " float: left; width: 30%;"> 
 				<option value='' selected>원하는 시간대를 선택하세요</option>
 				<option id='23' value='23'>22:00-23:00시</option>
 				<option id='24' value='24'>23:00-24:00시</option>
@@ -93,6 +120,7 @@ RestaurantDAO dao = new RestaurantDAO();
 				<option id='02' value='02'>01:00-02:00시</option>
 				<option id='03' value='03'>02:00-03:00시</option>
 			</select>
+			<h3 style = " float: left; width: 15%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
 			<input id="search" type=submit value="검색하기">
 		</form>
 		
@@ -106,6 +134,7 @@ RestaurantDAO dao = new RestaurantDAO();
 				else {total = dao.getTotalRestaurants();	}
 				out.println("<span>해당 지역 내 총 "+total+"개의 식당이 존재합니다.</span>");
 	
+
 				ArrayList<RestaurantVO> list = null;
 				int pagenumb = 1; // 기본으로 보여줄 페이지
 				

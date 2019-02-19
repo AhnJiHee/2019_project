@@ -25,22 +25,50 @@
 		
 </script> -->
 
+
+
 <style>
-	div div.list {
-		width: 250px;
-		height: 70%;
-		background-color: lightgray;
-		padding: 10px
-	}
-	div div table.restaurant {
-		width: 200px;
-		height: 100px;
-		text-align: center;
-		padding: 10px;
-	}
-	tr,td {
-		border: 1px;
-	}
+
+
+@font-face {
+	font-family: 'NanumSquareB';
+	src: url('fonts/NanumSquareB.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'NanumSquareR';
+	src: url('fonts/NanumSquareR.ttf') format('truetype');
+}
+
+
+div.list span {
+	font-family: NanumSquareB;
+	font-size: 1.3em;
+	color: red;
+}
+div div.list {
+	width: 250px;
+	height: 70%;
+	background-color: #A8DADC; 
+   color: #eee;
+	padding: 10px;
+	-webkit-box-shadow: 0px 3px 11px 2px rgba(0,0,0,0.2);
+   -moz-box-shadow: 0px 3px 11px 2px rgba(0,0,0,0.2);
+   box-shadow: 0px 3px 11px 2px rgba(0,0,0,0.2);
+
+}
+
+
+div div table.restaurant {
+	width: 200px;
+	height: 100px;
+	text-align: center;
+	padding: 10px;
+}
+
+tr, td {
+	border: 1px solid red;
+}
 </style>
 </head>
 <body>
@@ -75,7 +103,7 @@ RestaurantDAO dao = new RestaurantDAO();
 				<option id='02' value='02'>01:00-02:00시</option>
 				<option id='03' value='03'>02:00-03:00시</option>
 			</select>
-			<input id="search" type=submit value="검색하기">
+			<input id="search" type=submit value="검색하기" >
 		</form>
 		
 		<!-- 식당 리스트 -->
@@ -86,7 +114,7 @@ RestaurantDAO dao = new RestaurantDAO();
 				if (request.getParameter("province") !=null && request.getParameter("closetime") !=null) 
 					{total = dao.getTotalRestaurants(request);	} 
 				else {total = dao.getTotalRestaurants();	}
-				out.println("<span>해당 지역 내 총 "+total+"개의 식당이 존재합니다.</span>");
+				out.println("<span>해당 지역 내 <br>총 "+total+"개의 식당이 존재합니다.</span>");
 	
 				ArrayList<RestaurantVO> list = null;
 				int pagenumb = 1; // 기본으로 보여줄 페이지
@@ -115,7 +143,26 @@ RestaurantDAO dao = new RestaurantDAO();
 						"<tr><td colspan='2'> 마감시간 : " + vo.getClosetime() + ":00 시</td></tr></table>"
 				);}
 			%>
-		</div> 
+
+
+
+				<table class='restaurant' id='list"+i+"' border=1px>
+					<tr>
+						<td colspan='2'>vo.getName()</td>
+					</tr>
+					<tr>
+						<td colspan='2'>vo.getProvince() + vo.getAddress() </td>
+					</tr>
+					<tr>
+						<td> vo.getTag() </td>
+						<td>vo.getKeyword()</td>
+					</tr>
+					<tr>
+						<td colspan='2'>getClosetime()</td>
+					</tr>
+				</table>
+
+			</div> 
 	</div> 
 	
 	<!--페이지 번호-->
