@@ -27,7 +27,7 @@
 				url: "login",
 				data: param,
 				success: function(data) {
-					$("#div4").html(data);
+					$("#div5").html(data);
 				}
 			});
 		}); // login end
@@ -45,10 +45,10 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script src="../js/login.js"></script>
+		<script src="js/login.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
-	    <link rel="stylesheet" href="../css/login.css?after">
-	    <link rel="stylesheet" href="../css/tab.css?after">
+	    <link rel="stylesheet" href="css/login.css?after">
+	    <link rel="stylesheet" href="css/tab.css?after">
 	    
     
 	</head>
@@ -86,7 +86,8 @@
 			<section id="one" class="main style2 right dark fullscreen">
 			
 
-<div class="content box style2">
+<div class="content box style2"  style="overflow-x:hidden; overflow-y:auto; width:90%; height:750px;">
+
 				<div class="tabs">
 					  <div class="tab-2">
 					    <label for="tab2-1" id="tores">심야 식당 찾기</label>
@@ -161,7 +162,7 @@
 		<div class="container">
 			<div class="row">
 		
-		<div class="container" id="div4">
+		<div class="container" id="div5">
 		  <div class="card"></div>
 		  <div class="card">
 		    <h1 class="title">Login</h1>

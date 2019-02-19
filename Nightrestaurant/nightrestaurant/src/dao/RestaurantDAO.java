@@ -8,13 +8,14 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
+import vo.LocaltimeVO;
 import vo.RestaurantVO;
 
 public class RestaurantDAO {
 	public static final int EACH = 5;
 
 	// 선택 지역 음식점 목록 조회 메소드
-		public ArrayList<RestaurantVO> getSelectedList(HttpServletRequest request, int pagenum){
+		/*public ArrayList<RestaurantVO> getSelectedList(HttpServletRequest request, int pagenum){
 			ArrayList<RestaurantVO> list = new ArrayList<RestaurantVO>();
 			
 			try {
@@ -52,11 +53,11 @@ public class RestaurantDAO {
 					e.printStackTrace();
 			}
 			return list;
-		}
+		}*/
 		
 		// 목록 페이징 메소드
 		// 보여주고 싶은 페이지 번호 / 페이지마다 보여주려는 식당 개수
-		public ArrayList<RestaurantVO> getRestaurantList(int pagenum){
+		/*public ArrayList<RestaurantVO> getRestaurantList(int pagenum){
 			ArrayList<RestaurantVO> list = new ArrayList<RestaurantVO>();
 			
 			try {
@@ -89,7 +90,77 @@ public class RestaurantDAO {
 					e.printStackTrace();
 			}
 			return list;
-		}
+		}*/
+		
+		// 선택 지역 음식점 목록 조회 메소드
+				public ArrayList<RestaurantVO> getSelectedList(LocaltimeVO ltvo){
+					ArrayList<RestaurantVO> list = new ArrayList<RestaurantVO>();
+					
+					try {
+						Class.forName("oracle.jdbc.driver.OracleDriver");
+						Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
+						String sql = "select province 구, address 주소, bhours 영업시간,"
+								+ "closetime 마감시간, name 가게명, tag 종목, keyword 키워드"
+								 + "from restaurant where province=? and closetime=?";
+				
+						PreparedStatement pt = con.prepareStatement(sql);
+						String province = ltvo.getProvince();
+						String closetime = ltvo.getClosetime();
+						pt.setString(1, province);
+						pt.setString(2, closetime);			
+						pt.executeUpdate();
+						ResultSet rs = pt.executeQuery();
+							
+						while(rs.next()){
+							RestaurantVO vo = new RestaurantVO();
+							vo.setProvince((rs.getString("구")));
+							vo.setAddress((rs.getString("주소")));
+							vo.setBhours(rs.getString("영업시간"));
+							vo.setClosetime((rs.getString("마감시간")));
+							vo.setName((rs.getString("가게명")));
+							vo.setTag((rs.getString("종목")));
+							vo.setKeyword((rs.getString("키워드")));
+							list.add(vo);
+						}
+						 
+						con.close();
+					}catch(Exception e) {
+							e.printStackTrace();
+					}
+					return list;
+				}
+		
+		
+		// 레스토랑 목록 호출 메소드
+				public ArrayList<RestaurantVO> getRestaurantList(){
+					ArrayList<RestaurantVO> list = new ArrayList<RestaurantVO>();
+					
+					try {
+						Class.forName("oracle.jdbc.driver.OracleDriver");
+						Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
+						String sql = "select province 구, address 주소, bhours 영업시간, "
+								+ "closetime 마감시간, name 가게명, tag 종목, keyword 키워드"
+								 + " from restaurant";
+						PreparedStatement pt = con.prepareStatement(sql);		
+						ResultSet rs = pt.executeQuery();	
+						while(rs.next()){
+							RestaurantVO vo = new RestaurantVO();
+							vo.setProvince((rs.getString("구")));
+							vo.setAddress((rs.getString("주소")));
+							vo.setBhours(rs.getString("영업시간"));
+							vo.setClosetime((rs.getString("마감시간")));
+							vo.setName((rs.getString("가게명")));
+							vo.setTag((rs.getString("종목")));
+							vo.setKeyword((rs.getString("키워드")));
+							list.add(vo);
+						}
+						 
+						con.close();
+					}catch(Exception e) {
+							e.printStackTrace();
+					}
+					return list;
+				}
 		
 		// 총 식당 수 조회
 		
@@ -110,7 +181,28 @@ public class RestaurantDAO {
 			return count;
 		}
 		
-		public int getTotalRestaurants(HttpServletRequest request) {
+		public int getTotalRestaurants(LocaltimeVO ltvo) {
+			int count = 0;
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
+				String sql = "select count(*) from restaurant where province=? and closetime=?";
+				PreparedStatement pt = con.prepareStatement(sql);
+				String province = ltvo.getProvince();
+				String closetime = ltvo.getClosetime();
+				pt.setString(1, province);
+				pt.setString(2, closetime);
+				ResultSet rs = pt.executeQuery();
+				rs.next();
+				count = rs.getInt("count(*)");
+				con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return count;
+		}
+		
+		/*public int getTotalRestaurants(HttpServletRequest request) {
 			int count = 0;
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -128,7 +220,7 @@ public class RestaurantDAO {
 				e.printStackTrace();
 			}
 			return count;
-		}
+		}*/
 		
 		public ArrayList<String> getLonList(){
 			ArrayList<String> list = new ArrayList<String>();

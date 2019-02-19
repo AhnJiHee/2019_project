@@ -4,13 +4,14 @@ public class RestaurantVO {
 	
 	String province;
 	String address;
+	String bhours;
 	String closetime;
 	String name;
 	String tag;
 	String keyword;
 	String lon;
 	String lat;
-	
+
 	public RestaurantVO() {
 	}
 	
@@ -21,18 +22,20 @@ public class RestaurantVO {
 		this.name = name;
 	}
 	
-	public RestaurantVO(String province, String address, String closetime, String name, String tag, String keyword) {
+	public RestaurantVO(String province, String address, String bhours, String closetime, String name, String tag, String keyword) {
 		this.province = province;
 		this.address = address;
+		this.bhours = bhours;
 		this.closetime = closetime;
 		this.name = name;
 		this.tag = tag;
 		this.keyword = keyword;
 	}
 	
-	public RestaurantVO(String province, String address, String closetime, String name, String tag, String keyword,String lon, String lat) {
+	public RestaurantVO(String province, String address, String bhours, String closetime, String name, String tag, String keyword,String lon, String lat) {
 		this.province = province;
 		this.address = address;
+		this.bhours = bhours;
 		this.closetime = closetime;
 		this.name = name;
 		this.tag = tag;
@@ -107,6 +110,14 @@ public class RestaurantVO {
 		this.lat = lat;
 	}
 
+	public String getBhours() {
+		return bhours;
+	}
+
+	public void setBhours(String bhours) {
+		this.bhours = bhours;
+	}
+	
 	public String toString() {
 		return "RestaurantVO [province=" + province + ", address=" + address + ", closetime=" + closetime + ", name="
 				+ name + ", tag=" + tag + ", keyword=" + keyword + "]";
