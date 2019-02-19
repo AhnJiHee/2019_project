@@ -46,7 +46,7 @@
 <style>
 	div div.list {
 		width: 250px;
-		height: 70%;
+		height: 80%;
 		background-color: lightgray;
 		padding: 10px
 	}
@@ -58,6 +58,9 @@
 	}
 	tr,td {
 		border: 1px;
+	}
+	a {
+		color:black;
 	}
 </style>
 </head>
@@ -144,8 +147,34 @@ RestaurantDAO dao = new RestaurantDAO();
 			} else {
 				pagenumb = totalcont / RestaurantDAO.EACH +1;
 			}
-			for (int i =1 ; i <= pagenumb; i ++){
+			/* for (int i =1 ; i <= pagenumb; i ++){
 			out.print("<td><a href='main?branch=2&page="+i+"'>"+i+"</a></td>");
+			} */
+			
+			int block = Integer.parseInt(request.getParameter("block"));
+			int prevblock = block-1;
+			int nextblock = block+1;
+			int prevpage = 10*block - 11;
+			int nextpage = 10*block + 1;
+			int maxblock = 100;
+			if( pagenumb % 10 == 0) {
+				maxblock = pagenumb / 10;
+			} else {
+				maxblock = pagenumb / 10 + 1;
+			}
+			
+			// page 처리
+			if (block > 1) {
+				out.print("<td><a href='main?branch=2&block="+prevblock+"&page="+prevpage+"'>이전</a></td>");
+			}
+			for (int i = block * 10-9 ; i < block * 10+1; i++) {
+				out.print("<td><a href='main?branch=2&block="+block+"&page="+i+"'>"+i+"</a></td>");
+				if ( i >= pagenumb) {
+					break;
+				};	
+			};
+			if (block < maxblock) {
+				out.print("<td><a href='main?branch=2&block="+nextblock+"&page="+nextpage+"'>다음</a></td>");			
 			}
 			%>
 		</tr>

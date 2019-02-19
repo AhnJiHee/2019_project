@@ -19,7 +19,7 @@ public class RestaurantDAO {
 			
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 				String sql = "select X.r, X.province 구, X.address 주소, X.closetime 마감시간, X.name 가게명, X.tag 종목, X.keyword 키워드"
 						 + " from (select rownum r, A.province, A.address, A.closetime, A.name, A.tag, A.keyword"
 						 + " from (select * from restaurant order by name) A"
@@ -61,7 +61,7 @@ public class RestaurantDAO {
 			
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 				String sql = "select X.r, X.province 구, X.address 주소, X.closetime 마감시간, X.name 가게명, X.tag 종목, X.keyword 키워드"
 						 + " from (select rownum r, A.province, A.address, A.closetime, A.name, A.tag, A.keyword"
 						 + " from (select * from restaurant order by name) A"
@@ -97,7 +97,7 @@ public class RestaurantDAO {
 			int count = 0;
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 				String sql = "select count(*) from restaurant";
 				PreparedStatement pt = con.prepareStatement(sql);
 				ResultSet rs = pt.executeQuery();
@@ -114,7 +114,7 @@ public class RestaurantDAO {
 			int count = 0;
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 				String sql = "select count(*) from restaurant where province=? and closetime=?";
 				PreparedStatement pt = con.prepareStatement(sql);
 				pt.setString(1, request.getParameter("province"));
@@ -135,7 +135,7 @@ public class RestaurantDAO {
 			
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 				String sql = "select lon from restaurant";
 				PreparedStatement pt = con.prepareStatement(sql);
 								
@@ -166,7 +166,7 @@ public class RestaurantDAO {
 			
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 				String sql = "select lat from restaurant";
 				PreparedStatement pt = con.prepareStatement(sql);
 								
