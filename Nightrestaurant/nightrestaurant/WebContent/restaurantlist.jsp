@@ -22,7 +22,7 @@
 			if($("#closetime option:selected").val().length<1) {
 				alert("시간대를 선택하세요.")
 			}
-			/* var province=$("#province option:selected").val();
+			var province=$("#province option:selected").val();
 			var closetime=$("#closetime option:selected").val();
 			var param="branch=2&block=1&province="+province+"&closetime="+closetime;
 			$.ajax({
@@ -32,7 +32,7 @@
 				success: function(data) {
 					$("#div4").html(data);
 				}
-			}); */
+			});
 		}) //Search end
 		
 	}); // ready end
@@ -105,9 +105,8 @@ int each = RestaurantDAO.EACH;
 				// 총 식당 개수 출력 및 리스트 생성 - <span>
 				int total=0;
 				if (request.getParameter("province") !=null && request.getParameter("closetime") !=null) {
-					String province = request.getParameter("province");
-					String closetime = request.getParameter("closetime");
-					LocaltimeVO ltvo = new LocaltimeVO (province, closetime);
+					LocaltimeVO ltvo = new LocaltimeVO
+							(request.getParameter("province"), request.getParameter("closetime"));
 					list = dao.getSelectedList(ltvo);
 					total = dao.getTotalRestaurants(ltvo);
 					} 
