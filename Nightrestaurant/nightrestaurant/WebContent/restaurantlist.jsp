@@ -78,6 +78,7 @@ int each = RestaurantDAO.EACH;
 		<!-- selection form -->
 		<form action = "main">
 			<!-- 구 선택 select-->
+			<input type=hidden name="branch" value="2">
 			<select id="province" name="province"> 
 				<option value='' selected>구를 선택하세요</option>
 				<% for(int i = 0; i < province.length; i++) {
@@ -105,10 +106,13 @@ int each = RestaurantDAO.EACH;
 				// 총 식당 개수 출력 및 리스트 생성 - <span>
 				int total=0;
 				if (request.getParameter("province") !=null && request.getParameter("closetime") !=null) {
-					LocaltimeVO ltvo = new LocaltimeVO
-							(request.getParameter("province"), request.getParameter("closetime"));
-					list = dao.getSelectedList(ltvo);
+					String province = request.getParameter("province");
+					String closetime = request.getParameter("closetime");
+					LocaltimeVO ltvo = new LocaltimeVO (province, closetime);
+					list = dao.getSelectedList(ltvo); 
 					total = dao.getTotalRestaurants(ltvo);
+					session.setAttribute("province", province);
+					session.setAttribute("closetime", closetime);
 					} 
 				else {
 					list = dao.getRestaurantList();
@@ -154,7 +158,7 @@ int each = RestaurantDAO.EACH;
 			
 			int prevblock = block-1;
 			int nextblock = block+1;
-			int prevpage = 10*block - 11;
+			int prevpage = 10*block - 10;
 			int nextpage = 10*block + 1;
 			int maxblock = 100;
 			if( pagenumb % 10 == 0) {

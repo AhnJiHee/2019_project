@@ -100,8 +100,8 @@ public class RestaurantDAO {
 						Class.forName("oracle.jdbc.driver.OracleDriver");
 						Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 						String sql = "select province 구, address 주소, bhours 영업시간,"
-								+ "closetime 마감시간, name 가게명, tag 종목, keyword 키워드"
-								 + "from restaurant where province=? and closetime=?";
+								+ " closetime 마감시간, name 가게명, tag 종목, keyword 키워드"
+								 + " from restaurant where province=? and closetime>=?";
 				
 						PreparedStatement pt = con.prepareStatement(sql);
 						String province = ltvo.getProvince();
@@ -186,7 +186,7 @@ public class RestaurantDAO {
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
-				String sql = "select count(*) from restaurant where province=? and closetime=?";
+				String sql = "select count(*) from restaurant where province=? and closetime>=?";
 				PreparedStatement pt = con.prepareStatement(sql);
 				String province = ltvo.getProvince();
 				String closetime = ltvo.getClosetime();

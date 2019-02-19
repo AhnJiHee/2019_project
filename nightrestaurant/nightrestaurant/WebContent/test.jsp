@@ -1,15 +1,16 @@
+<%@page import="java.io.File"%>
 <%@page import="dao.MemberDAO"%>
 <%@page import="vo.BoardVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%File f = new File(request.getRealPath(request.getRequestURI()));
+java.util.Date d = new java.util.Date( f.lastModified() );
+response.setHeader("Last-Modified", d.toString() );
+response.setHeader("ETag", d.toString() );%>
 <!DOCTYPE HTML>
-<!--
-	Big Picture by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
 		<title>심야식당</title>

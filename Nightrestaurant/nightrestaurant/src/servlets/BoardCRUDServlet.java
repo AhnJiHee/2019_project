@@ -31,7 +31,7 @@ public class BoardCRUDServlet extends HttpServlet {
 			int seq = (Integer) session.getAttribute("boardseq");
 			bdao.deleteBoard(seq);
 			html = "<h1 align='center'>삭제가 완료되었습니다.</h1>" +
-					 "<form class='center' action='mainpage.jsp'>" +
+					 "<form class='center' action='test.jsp'>" +
 					 "<input type=submit value='메인으로 돌아가기'>";			
 		} else if (action.equals("수정")) {
 			BoardVO vo = (BoardVO) session.getAttribute("boardvo");
@@ -52,7 +52,7 @@ public class BoardCRUDServlet extends HttpServlet {
 					"	</tr>" + 
 					"</table>" +
 					"<h1 align='center'> 수정되었습니다. </h1>" + 
-					"<form class='center' action='mainpage.jsp'>" + 
+					"<form class='center' action='test.jsp'>" + 
 					"<input type=submit value='메인으로 돌아가기'>";
 		} else if (action.equals("저장")) {
 			String boardtitle = (String) request.getParameter("boardtitle");
@@ -73,7 +73,7 @@ public class BoardCRUDServlet extends HttpServlet {
 					"</table>" + 
 					"" + 
 					"<h1 align='center'> 저장되었습니다. </h1>" + 
-					"<form class='center' action='mainpage.jsp'>" + 
+					"<form class='center' action='test.jsp'>" + 
 					"<input type=submit value='메인으로 돌아가기'>" + 
 					"</form>";
 		} 

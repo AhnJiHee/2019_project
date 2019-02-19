@@ -37,6 +37,9 @@
 		}); // search end
 	}); // ready end
 </script>
+<style>
+a { color : black;}
+</style>
 </head>
 <body>
 
@@ -67,6 +70,8 @@
 					}
 				
 			%>
+			</table>
+			<table>
 			<tr>
 				<td colspan="2"><input type=text id="word" name="word" placeholder="검색할 내용을 입력하세요."></td>
 				<td><select id="tag" name="tag">
@@ -96,7 +101,7 @@
 				pagenumb = totalcont / BoardDAO.EACH +1;
 			}
 			for (int i =1 ; i <= pagenumb; i ++){
-			out.print("<td><a href='main?branch=1&page="+i+"'>"+i+"</a></td>");
+			out.print("<td><a href='test.jsp?branch=1&page="+i+"'>"+i+"</a></td>");
 			}
 			%>
 		</form>

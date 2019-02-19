@@ -34,7 +34,7 @@ $(document).ready(function() {
 	
 	$(".back").on("click", function(){
 		var referrer =  document.referrer;
-		location.href = "main";
+		location.href = "test.jsp";
 	});// back end
 	
 }); // ready end

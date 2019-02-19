@@ -33,11 +33,9 @@ public class RLeaflet {
             r.eval("mk_lat1 <- NULL");
             for(int i=0; i<list1.size(); i++) {
             	r.eval("mk_lon1 <- c(mk_lon1," + list1.get(i)+")");
-            	System.out.println(list1.get(i));
             }
             for(int i = 0; i <list2.size(); i++) {
             	r.eval("mk_lat1 <- c(mk_lat1," + list2.get(i)+")");
-            	System.out.println(list2.get(i));
             }
             /*r.eval("mk_lon <- " + list1);
             r.eval("mk_lat <- " + list2);*/
