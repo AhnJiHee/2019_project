@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-
-import vo.LocaltimeVO;
 import vo.RestaurantVO;
 
 public class RestaurantDAO {
@@ -93,7 +91,7 @@ public class RestaurantDAO {
 		}*/
 		
 		// 선택 지역 음식점 목록 조회 메소드
-				public ArrayList<RestaurantVO> getSelectedList(LocaltimeVO ltvo){
+				public ArrayList<RestaurantVO> getSelectedList(String province, String closetime){
 					ArrayList<RestaurantVO> list = new ArrayList<RestaurantVO>();
 					
 					try {
@@ -104,8 +102,6 @@ public class RestaurantDAO {
 								 + " from restaurant where province=? and closetime>=?";
 				
 						PreparedStatement pt = con.prepareStatement(sql);
-						String province = ltvo.getProvince();
-						String closetime = ltvo.getClosetime();
 						pt.setString(1, province);
 						pt.setString(2, closetime);			
 						pt.executeUpdate();
@@ -181,15 +177,13 @@ public class RestaurantDAO {
 			return count;
 		}
 		
-		public int getTotalRestaurants(LocaltimeVO ltvo) {
+		public int getTotalRestaurants(String province, String closetime) {
 			int count = 0;
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 				String sql = "select count(*) from restaurant where province=? and closetime>=?";
 				PreparedStatement pt = con.prepareStatement(sql);
-				String province = ltvo.getProvince();
-				String closetime = ltvo.getClosetime();
 				pt.setString(1, province);
 				pt.setString(2, closetime);
 				ResultSet rs = pt.executeQuery();

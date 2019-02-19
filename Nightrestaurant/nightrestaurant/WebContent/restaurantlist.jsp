@@ -1,4 +1,3 @@
-<%@page import="vo.LocaltimeVO"%>
 <%@page import="dao.RestaurantDAO"%>
 <%@page import="vo.RestaurantVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -76,7 +75,7 @@ int each = RestaurantDAO.EACH;
 		<h1>음식점 목록입니다.</h1>
 		
 		<!-- selection form -->
-		<form action = "main">
+		<form action = "test.jsp">
 			<!-- 구 선택 select-->
 			<input type=hidden name="branch" value="2">
 			<select id="province" name="province"> 
@@ -108,16 +107,21 @@ int each = RestaurantDAO.EACH;
 				if (request.getParameter("province") !=null && request.getParameter("closetime") !=null) {
 					String province = request.getParameter("province");
 					String closetime = request.getParameter("closetime");
-					LocaltimeVO ltvo = new LocaltimeVO (province, closetime);
-					list = dao.getSelectedList(ltvo); 
-					total = dao.getTotalRestaurants(ltvo);
+					list = dao.getSelectedList(province, closetime); 
+					total = dao.getTotalRestaurants(province, closetime);
 					session.setAttribute("province", province);
 					session.setAttribute("closetime", closetime);
 					} 
-				else {
+				else if (session.getAttribute("province") != null & session.getAttribute("closetime") != null){
+					String province = (String) session.getAttribute("province");
+					String closetime = (String) session.getAttribute("closetime");
+					list = dao.getSelectedList(province, closetime); 
+					total = dao.getTotalRestaurants(province, closetime);
+				} else {
 					list = dao.getRestaurantList();
 					total = dao.getTotalRestaurants();
 					}
+				
 				out.println("<span>해당 지역 내 총 "+total+"개의 식당이 존재합니다.</span>");
 	
 				// 페이지 번호 호출
@@ -149,7 +153,7 @@ int each = RestaurantDAO.EACH;
 				pagenumb = totalcont / each +1;
 			}
 			/* for (int i =1 ; i <= pagenumb; i ++){
-			out.print("<td><a href='main?branch=2&page="+i+"'>"+i+"</a></td>");
+			out.print("<td><a href='test.jsp?branch=2&page="+i+"'>"+i+"</a></td>");
 			} */
 			
 			int block = 1;
@@ -169,16 +173,16 @@ int each = RestaurantDAO.EACH;
 			
 			// page 처리
 			if (block > 1) {
-				out.print("<td><a href='main?branch=2&block="+prevblock+"&page="+prevpage+"'>이전</a></td>");
+				out.print("<td><a href='test.jsp?branch=2&block="+prevblock+"&page="+prevpage+"'>이전</a></td>");
 			}
 			for (int i = block * 10-9 ; i < block * 10+1; i++) {
-				out.print("<td><a href='main?branch=2&block="+block+"&page="+i+"'>&nbsp"+i+"</a></td>");
+				out.print("<td><a href='test.jsp?branch=2&block="+block+"&page="+i+"'>&nbsp"+i+"</a></td>");
 				if ( i >= pagenumb) {
 					break;
 				};	
 			};
 			if (block < maxblock) {
-				out.print("<td><a href='main?branch=2&block="+nextblock+"&page="+nextpage+"'>다음</a></td>");			
+				out.print("<td><a href='test.jsp?branch=2&block="+nextblock+"&page="+nextpage+"'>다음</a></td>");			
 			}
 			%>
 		</tr>
