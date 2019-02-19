@@ -93,14 +93,14 @@ response.setHeader("ETag", d.toString() );%>
 					  <div class="tab-2">
 					    <label for="tab2-1" id="tores">심야 식당 찾기</label>
 					    <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
-					    <div>
+					    <div id="tabA">
 					    	<jsp:include page="restaurantlist.jsp"></jsp:include>
 					    </div>
 					  </div>
 					  <div class="tab-2">
 					    <label for="tab2-2"  id="toboard">게시판 보기</label>
 					    <input id="tab2-2" name="tabs-two" type="radio">
-					    <div>
+					    <div id="tabB">
 					    	<jsp:include page="boardlist.jsp"></jsp:include>
 					    
 					    </div>

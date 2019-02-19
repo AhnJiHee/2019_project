@@ -21,11 +21,12 @@
 			if($("#closetime option:selected").val().length<1) {
 				alert("시간대를 선택하세요.")
 			}
-			var province=$("#province option:selected").val();
-			var closetime=$("#closetime option:selected").val();
-			var param="branch=2&block=1&province="+province+"&closetime="+closetime;
+			var branch = 2
+			var province = $("#province option:selected").val();
+			var closetime = $("#closetime option:selected").val();
+			param = "branch="+branch+"&province="+province+"&closetime="+closetime+"&block=1&page=1"
 			$.ajax({
-				type: "POST",
+				type: "get",
 				url: "restaurantlist.jsp",
 				data: param,
 				success: function(data) {
@@ -33,6 +34,51 @@
 				}
 			});
 		}) //Search end
+		
+		$(".prev").on('click', function(e){
+			var branch = 2
+			var block = parseInt($("#block").val())-1;
+			var page = $("#prevpage").val();
+			var param = "branch="+branch+"&block="+block+"&page="+page;
+			$.ajax({
+				type: "get",
+				url: "restaurantlist.jsp",
+				data: param,
+				success: function(data) {
+					$("#div4").html(data);
+				}
+			});
+		}); //.page end
+		
+		$(".page").on('click', function(e){
+			var branch = 2
+			var block = $("#block").val();
+			var page = $(e.target).html();
+			var param = "branch="+branch+"&block="+block+"&page="+page;
+			$.ajax({
+				type: "get",
+				url: "restaurantlist.jsp",
+				data: param,
+				success: function(data) {
+					$("#div4").html(data);
+				}
+			});
+		}); //.page end
+		
+		$(".next").on('click', function(e){
+			var branch = 2
+			var block = parseInt($("#block").val())+1;
+			var page = $("#nextpage").val();
+			var param = "branch="+branch+"&block="+block+"&page="+page;
+			$.ajax({
+				type: "get",
+				url: "restaurantlist.jsp",
+				data: param,
+				success: function(data) {
+					$("#div4").html(data);
+				}
+			});
+		}); //.page end
 		
 	}); // ready end
 		
@@ -75,26 +121,23 @@ int each = RestaurantDAO.EACH;
 		<h1>음식점 목록입니다.</h1>
 		
 		<!-- selection form -->
-		<form action = "test.jsp">
-			<!-- 구 선택 select-->
-			<input type=hidden name="branch" value="2">
-			<select id="province" name="province"> 
-				<option value='' selected>구를 선택하세요</option>
-				<% for(int i = 0; i < province.length; i++) {
-					out.println("<option value='"+province[i]+"'>" + province[i] + "</option>");
-				}%>
-			</select>
-			<!-- 시간 선택 => 마감시간으로 전달 select-->
-			<select id="closetime" name="closetime"> 
-				<option value='' selected>원하는 시간대를 선택하세요</option>
-				<option id='23' value='23'>22:00-23:00시</option>
-				<option id='24' value='24'>23:00-24:00시</option>
-				<option id='25' value='25'>24:00-01:00시</option>
-				<option id='26' value='26'>01:00-02:00시</option>
-				<option id='27' value='27'>02:00-03:00시</option>
-			</select>
-			<input id="Search" type=submit value="검색하기">
-		</form>
+		<!-- 구 선택 select-->
+		<select id="province" name="province"> 
+			<option value='' selected>구를 선택하세요</option>
+			<% for(int i = 0; i < province.length; i++) {
+				out.println("<option value='"+province[i]+"'>" + province[i] + "</option>");
+			}%>
+		</select>
+		<!-- 시간 선택 => 마감시간으로 전달 select-->
+		<select id="closetime" name="closetime"> 
+			<option value='' selected>원하는 시간대를 선택하세요</option>
+			<option id='23' value='23'>22:00-23:00시</option>
+			<option id='24' value='24'>23:00-24:00시</option>
+			<option id='25' value='25'>24:00-01:00시</option>
+			<option id='26' value='26'>01:00-02:00시</option>
+			<option id='27' value='27'>02:00-03:00시</option>
+		</select>
+		<input id="Search" type=button value="검색하기">
 		
 		<!-- 식당 리스트 -->
 		<div class="list">
@@ -173,18 +216,21 @@ int each = RestaurantDAO.EACH;
 			
 			// page 처리
 			if (block > 1) {
-				out.print("<td><a href='test.jsp?branch=2&block="+prevblock+"&page="+prevpage+"'>이전</a></td>");
+				out.print("<td><span class='prev'>이전</span>");
 			}
 			for (int i = block * 10-9 ; i < block * 10+1; i++) {
-				out.print("<td><a href='test.jsp?branch=2&block="+block+"&page="+i+"'>&nbsp"+i+"</a></td>");
+				out.print("<td><span class='page'>"+i+"</span></td>");
 				if ( i >= pagenumb) {
 					break;
 				};	
 			};
 			if (block < maxblock) {
-				out.print("<td><a href='test.jsp?branch=2&block="+nextblock+"&page="+nextpage+"'>다음</a></td>");			
+				out.print("<td><span class='next'>다음</span></td>");			
 			}
 			%>
+			<input type=hidden id='block' value= <%=block%>>
+			<input type=hidden id='prevpage' value= <%=prevpage%>>
+			<input type=hidden id='nextpage' value= <%=nextpage%>>
 		</tr>
 	</table>
 </div>

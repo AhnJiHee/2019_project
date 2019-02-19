@@ -30,11 +30,26 @@
 				url: "boardlistsearch.jsp",
 				data: param,
 				success: function(data) {
-					$("#div4").html(data);
+					$("#div5").html(data);
 				}
 			});
 			return false;
 		}); // search end
+		
+		$(".Page").on('click', function(e){
+			var branch = 1
+			var page = $(e.target).html();
+			var param = "branch="+branch+"&page="+page;
+			$.ajax({
+				type: "get",
+				url: "boardlist.jsp",
+				data: param,
+				success: function(data) {
+					$("#div5").html(data);
+				}
+			});
+		}); //.page end
+		
 	}); // ready end
 </script>
 <style>
@@ -43,7 +58,7 @@ a { color : black;}
 </head>
 <body>
 
-<div id = "div4">
+<div id = "div5">
 	<!--게시판 제목-->
 	<div class="center" id="div1">
 	<h1>게시판 목록입니다.</h1>
@@ -101,7 +116,7 @@ a { color : black;}
 				pagenumb = totalcont / BoardDAO.EACH +1;
 			}
 			for (int i =1 ; i <= pagenumb; i ++){
-			out.print("<td><a href='test.jsp?branch=1&page="+i+"'>"+i+"</a></td>");
+			out.print("<td><span class='Page'>"+i+"</span></td>");
 			}
 			%>
 		</form>
