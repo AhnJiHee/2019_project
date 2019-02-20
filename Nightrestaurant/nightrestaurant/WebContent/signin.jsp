@@ -1,4 +1,4 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,8 +14,7 @@
 이름 입력 : <input type="name" name = "name"><br>
 전화번호 입력 : <input type="tel" name = "phone" pattern = "010-[0-9]{3,4}-[0-9]{4}"><br>
 이메일 입력 : <input type="email" name = "email"><br>
- <input type="submit" value = "회원가입">
-</form>
+
 
 </body>
-</html> --%>
+</html>

@@ -15,6 +15,12 @@ public class RestaurantVO {
 	public RestaurantVO() {
 	}
 	
+	public RestaurantVO(String province, String closetime) {
+		super();
+		this.province = province;
+		this.closetime = closetime;
+	}
+
 	public RestaurantVO(String province, String address, String closetime, String name) {
 		this.province = province;
 		this.address = address;

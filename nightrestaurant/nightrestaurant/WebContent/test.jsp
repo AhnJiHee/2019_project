@@ -18,7 +18,22 @@ response.setHeader("ETag", d.toString() );%>
 <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-	
+		
+		$("#login").click(function() {
+			var id=$("#id").val();
+			var pw=$("#pw").val();
+			var param="id="+id+"&pw="+pw;
+			$.ajax({
+				type: "get",
+				url: "login",
+				data: param,
+				success: function(data) {
+					$(".login_div").html(data);
+				}
+			});
+			return false;
+		}); // login end
+		
 		/* $("#login").click(function() {
 			var id=$("#id").val();
 			var pw=$("#pw").val();
@@ -33,7 +48,7 @@ response.setHeader("ETag", d.toString() );%>
 			});
 		}); // login end */
 		
-		$("#logout").on("click", function(){
+		$(".logout").on("click", function(){
 			location.href = "logout";
 			alert("로그아웃 되었습니다");
 		}); // logout end
@@ -252,77 +267,39 @@ response.setHeader("ETag", d.toString() );%>
 
 			<div class="container">
 				<div class="row">
-
-					<% if (session.getAttribute("id") == null & session.getAttribute("pw") ==null) { %>
 					<div class="container">
 						<div class="card"></div>
 						<div class="card">
-							<h1 class="title">Login</h1>
-							<form action="login">
-								<div class="input-container">
-									<input type=text id="id" name="id" required="required">
-									<!-- <input type="text" id="Username" required="required"/> -->
-									<label for="Username">Username</label>
-									<div class="bar"></div>
+							<% if (session.getAttribute("id")==null & session.getAttribute("pw")==null) {%>
+							<div id="div3">
+								<!-- 로그인창-->
+								<div class="login_div">
+									<table class="left" border="2">
+										<tr>
+											<td><input type=text id="id" name="id" placeholder="아이디"></td>
+											<td rowspan=2><input type="button" id="login"
+												value="로그인"></td>
+										</tr>
+										<tr>
+											<td><input type=text id="pw" name="pw"
+												placeholder="비밀번호"></td>
+										</tr>
+									</table>
+									<a class="left" href="signin.jsp">회원가입 하러 가기</a>								
 								</div>
-								<div class="input-container">
-									<input type="password" id="pw" name="pw" required="required" />
-									<!--  <input type="password" id="Password" required="required"/> -->
-									<label for="Password">Password</label>
-									<div class="bar"></div>
-								</div>
-								<div class="button-container">
-									<input type="submit" id="login" value="로그인">
-									<!--   <button><span>Go</span></button> -->
-								</div>
-							</form>
+								<!--로그인창 end-->
+							</div>
+							<%} else { %>
+							<div id="div3">
+								<table>
+									<tr>
+										<td><h3> <%= session.getAttribute("id") %> 회원님 환영합니다.<br></h3></td>
+									</tr>
+								</table>
+								<input type=button class='logout' value='로그아웃'>
+							</div>
+							<% } %>
 						</div>
-						<% } else { %>
-							<h3>
-								<%=session.getAttribute("id") %>
-								회원님 환영합니다.
-							</h3>
-						<input type=button id="logout" value="로그아웃">
-						<% } %>
-						<div class="card alt">
-							<div class="toggle"></div>
-							<h1 class="title">
-								회원가입
-								<div class="close"></div>
-							</h1>
-
-
-							<form action="signin" method="post">
-								<div class="input-container">
-									<input type="text" name="id" id="Username" required="required" />
-									<label for="Username">Username</label>
-									<div class="bar"></div>
-								</div>
-								<div class="input-container">
-									<input type="password" id="Password" required="required" /> <label
-										for="Password">Password</label>
-									<div class="bar"></div>
-								</div>
-								<div class="input-container">
-									<input type="name" name="name" required="required" /> <label
-										for="Name">Name</label>
-									<div class="bar"></div>
-								</div>
-								<div class="input-container">
-									<input type="tel" name="phone"
-										pattern="010-[0-9]{3,4}-[0-9]{4}" required="required" /> <label
-										for="tel">Tel</label>
-									<div class="bar"></div>
-								</div>
-								<div class="input-container">
-									<input type="email" name="email" required="required" /> <label
-										for="email">email</label>
-									<div class="bar"></div>
-								</div>
-								<div class="button-container">
-									<input type="submit" value="회원가입">
-								</div>
-							</form>
 						</div>
 					</div>
 				</div>

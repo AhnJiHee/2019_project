@@ -32,11 +32,10 @@ public class LoginSessionServlet extends HttpServlet {
 			session.setAttribute("password", password);
 			html = "<table>" +
 					"	<tr>" +
-					"		<td><h3>" + id + " 회원님 환영합니다.<br></h3></td>" + 
+					"		<td><h3>성공적으로 로그인 되었습니다!<br></h3></td>" + 
 					"	</tr>" +
 					"</table>" +
-					"<input type=button id='logout' value='로그아웃'>" +
-					"<a href = test.jsp>돌아가기</a>";
+					"<input type=button class='logout' value='로그아웃'>";
 			/*RequestDispatcher rd = request.getRequestDispatcher("loginstatus.jsp");
 			rd.forward(request, response);*/
 		}else if (result.equals("확인")){

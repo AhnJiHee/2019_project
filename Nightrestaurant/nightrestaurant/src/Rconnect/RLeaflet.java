@@ -2,18 +2,23 @@ package Rconnect;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.rosuda.REngine.Rserve.RConnection;
 
 import dao.RestaurantDAO;
 
 public class RLeaflet {
-	
-	RestaurantDAO rdao = new RestaurantDAO();
-	ArrayList<String> list1 = rdao.getLonList();
-	ArrayList<String> list2 = rdao.getLatList();
    
-      public String returnLeaflet2(String path)  {
-    	  
+   
+   
+      public String returnLeaflet2(String path, String province, String closetime)  {
+         
+         RestaurantDAO rdao = new RestaurantDAO();
+          
+       ArrayList<String> list1 = rdao.getLonList(province, closetime);
+       ArrayList<String> list2 = rdao.getLatList(province, closetime);
+         
          RConnection r = null;
          String retStr = "";
          try {
@@ -32,10 +37,10 @@ public class RLeaflet {
             r.eval("mk_lon1 <- NULL");
             r.eval("mk_lat1 <- NULL");
             for(int i=0; i<list1.size(); i++) {
-            	r.eval("mk_lon1 <- c(mk_lon1," + list1.get(i)+")");
+               r.eval("mk_lon1 <- c(mk_lon1," + list1.get(i)+")");
             }
             for(int i = 0; i <list2.size(); i++) {
-            	r.eval("mk_lat1 <- c(mk_lat1," + list2.get(i)+")");
+               r.eval("mk_lat1 <- c(mk_lat1," + list2.get(i)+")");
             }
             /*r.eval("mk_lon <- " + list1);
             r.eval("mk_lat <- " + list2);*/

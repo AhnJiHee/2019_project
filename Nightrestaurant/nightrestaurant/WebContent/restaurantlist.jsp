@@ -33,6 +33,19 @@
 					$("#div4").html(data);
 				}
 			});
+			$.ajax({
+	            type: "POST",
+	            url: "http://localhost:8081/nightrestaurant/R",
+	            
+	            data: {"province" : province, "closetime" : closetime} ,
+	            success: function() {
+	               /* alert("ㅋㅋ"); */
+	               
+	               $("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' width='100%' height='500' seamless></iframe>"); 
+	            },
+	            error : function(){
+	               alert("오류발생")}
+	         });
 		}) //Search end
 		
 		$(".prev").on('click', function(e){
@@ -80,6 +93,9 @@
 				}
 			});
 		}); //.page end
+		
+		
+		
 		
 	}); // ready end
 		
@@ -131,14 +147,14 @@ int each = RestaurantDAO.EACH;
 		<!-- 시간 선택 => 마감시간으로 전달 select-->
 		<select id="closetime" name="closetime"> 
 			<option value='' selected>원하는 시간대를 선택하세요</option>
-			<option id='23' value='23'>22:00-23:00시</option>
-			<option id='24' value='24'>23:00-24:00시</option>
-			<option id='25' value='25'>24:00-01:00시</option>
-			<option id='26' value='26'>01:00-02:00시</option>
-			<option id='27' value='27'>02:00-03:00시</option>
-			<option id='28' value='28'>03:00-04:00시</option>
-			<option id='29' value='29'>04:00-05:00시</option>
-			<option id='30' value='30'>05:00-06:00시</option>
+			<option id='23' value='23'>10시 이후</option>
+			<option id='24' value='24'>11시 이후</option>
+			<option id='25' value='25'>12시 이후</option>
+			<option id='26' value='26'>새벽 1시 이후</option>
+			<option id='27' value='27'>새벽 2시 이후</option>
+			<option id='28' value='28'>새벽 3시 이후</option>
+			<option id='29' value='29'>새벽 4시 이후</option>
+			<option id='30' value='30'>새벽 5시 이후</option>
 		</select>
 		<input id="Search" type=button value="검색하기">
 		
@@ -166,15 +182,16 @@ int each = RestaurantDAO.EACH;
 				} else {
 					list = dao.getRestaurantList();
 					total = dao.getTotalRestaurants();
-					}
-				
-				out.println("<span>해당 지역 내 총 "+total+"개의 식당이 존재합니다.</span>");
-	
+					}	
 				// 페이지 번호 호출
 				if(request.getParameter("page") != null){
 					pagenumb = Integer.parseInt(request.getParameter("page"));
 				}
-				
+			%>
+			
+			<div>
+			<th> 해당 지역 내 총 <%=total%>개의 식당이 존재합니다.</th>
+			<%
 				// 식당 리스트 출력
 				for (int i = each*(pagenumb-1); i < each*pagenumb; i++) {
 				RestaurantVO vo = list.get(i);
@@ -182,9 +199,14 @@ int each = RestaurantDAO.EACH;
 						"<table class='restaurant' id='list"+i+"' border=1px><tr><td colspan='2'>" + vo.getName() + "</td></tr>" +
 						"<tr><td colspan='2'>" + vo.getAddress() + "</td></tr>" +
 						"<tr><td>"+ vo.getTag() + "</td><td>" + vo.getKeyword() + "</td></tr>" +
-						"<tr><td colspan='2'>" + vo.getBhours() + "</td></tr></table>"
+						"<tr><td colspan='2'>" + vo.getBhours() + "</td></tr></table>" +
+						"<tr><td><input type='button' value='찜하기'></input></td></tr></table>"
 				);}
 			%>
+			</div>
+			
+			
+			
 		</div> 
 	</div> 
 	
@@ -236,7 +258,11 @@ int each = RestaurantDAO.EACH;
 		</tr>
 	</table>
 </div>
-
+<div id='div5'>
+   
+<div id="iframearea"></div>      
+      
+</div>
 
 </body>
 </html>
