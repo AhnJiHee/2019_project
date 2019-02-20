@@ -17,7 +17,7 @@ public class MemberDAO {
 		String id = vo.getId();
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 				
 			String sql = 
 					"insert into member values "
@@ -43,7 +43,7 @@ public class MemberDAO {
 		String result = "";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 				
 			String sql = 
 					"select password from member where id = ?";

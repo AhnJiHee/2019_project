@@ -16,6 +16,7 @@ import vo.MemberVO;
 public class SigninServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
@@ -31,7 +32,7 @@ public class SigninServlet extends HttpServlet {
 		dao.signIn(vo);
 		
 		result="<h1 align='center'>회원가입이 완료되었습니다.</h1>" +
-				"<form class='center' action='mainpage.jsp'>" + 
+				"<form class='center' action='test.jsp'>" + 
 				"<input type=submit value='메인으로 돌아가기'>" + 
 				"</form>";
 		

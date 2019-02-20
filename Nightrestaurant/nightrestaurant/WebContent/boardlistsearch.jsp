@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>게시물 검색</title>
 <body>
-	<h1 align=center>검색된 내용입니다.</h1>
+	<h1>검색된 내용입니다.</h1>
 
 	<table class="list" border="2px">
 		<tr>

@@ -19,7 +19,7 @@ response.setHeader("ETag", d.toString() );%>
 <script type="text/javascript">
 	$(document).ready(function() {
 	
-		$("#login").click(function() {
+		/* $("#login").click(function() {
 			var id=$("#id").val();
 			var pw=$("#pw").val();
 			var param="id="+id+"&pw="+pw;
@@ -28,10 +28,10 @@ response.setHeader("ETag", d.toString() );%>
 				url: "login",
 				data: param,
 				success: function(data) {
-					$("#div5").html(data);
+					$("#div6").html(data);
 				}
 			});
-		}); // login end
+		}); // login end */
 		
 		$("#logout").on("click", function(){
 			location.href = "logout";
@@ -98,15 +98,22 @@ response.setHeader("ETag", d.toString() );%>
 			style="overflow-x: hidden; overflow-y: auto; width: 90%; height: 750px;">
 
 			<div class="tabs">
+		<!--	<div class="tab-2">
+					<label for="tab2-1">서울의 식당들</label> <input id="tab2-1"
+						name="tabs-two" type="radio" checked="checked">
+					<div id="tabC">
+
+					</div>
+				</div> -->
 				<div class="tab-2">
-					<label for="tab2-1" id="tores">심야 식당 찾기</label> <input id="tab2-1"
+					<label for="tab2-2" id="tores">심야 식당 찾기</label> <input id="tab2-2"
 						name="tabs-two" type="radio" checked="checked">
 					<div id="tabA">
 						<jsp:include page="restaurantlist.jsp"></jsp:include>
 					</div>
 				</div>
 				<div class="tab-2">
-					<label for="tab2-2" id="toboard">게시판 보기</label> <input id="tab2-2"
+					<label for="tab2-3" id="toboard">게시판 보기</label> <input id="tab2-3"
 						name="tabs-two" type="radio">
 					<div id="tabB">
 						<jsp:include page="boardlist.jsp"></jsp:include>
@@ -243,16 +250,15 @@ response.setHeader("ETag", d.toString() );%>
 	<section id="work" class="main style3 primary">
 		<div class="content">
 
-
-			<% if (session.getAttribute("id") == null & session.getAttribute("pw") ==null) { %>
 			<div class="container">
 				<div class="row">
 
-					<div class="container" id="div5">
+					<% if (session.getAttribute("id") == null & session.getAttribute("pw") ==null) { %>
+					<div class="container">
 						<div class="card"></div>
 						<div class="card">
 							<h1 class="title">Login</h1>
-							<form>
+							<form action="login">
 								<div class="input-container">
 									<input type=text id="id" name="id" required="required">
 									<!-- <input type="text" id="Username" required="required"/> -->
@@ -266,17 +272,16 @@ response.setHeader("ETag", d.toString() );%>
 									<div class="bar"></div>
 								</div>
 								<div class="button-container">
-									<input type="button" id="login" value="로그인">
+									<input type="submit" id="login" value="로그인">
 									<!--   <button><span>Go</span></button> -->
 								</div>
-
 							</form>
 						</div>
 						<% } else { %>
-						<h3>
-							<%=session.getAttribute("id") %>
-							회원님 환영합니다.
-						</h3>
+							<h3>
+								<%=session.getAttribute("id") %>
+								회원님 환영합니다.
+							</h3>
 						<input type=button id="logout" value="로그아웃">
 						<% } %>
 						<div class="card alt">

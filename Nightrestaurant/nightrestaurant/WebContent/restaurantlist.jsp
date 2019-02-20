@@ -55,6 +55,7 @@
 			var block = $("#block").val();
 			var page = $(e.target).html();
 			var param = "branch="+branch+"&block="+block+"&page="+page;
+			alert(param);
 			$.ajax({
 				type: "get",
 				url: "restaurantlist.jsp",
@@ -88,7 +89,6 @@
 	div div.list {
 		width: 250px;
 		height: 80%;
-		background-color: lightgray;
 		padding: 10px
 	}
 	div div table.restaurant {
@@ -136,6 +136,9 @@ int each = RestaurantDAO.EACH;
 			<option id='25' value='25'>24:00-01:00시</option>
 			<option id='26' value='26'>01:00-02:00시</option>
 			<option id='27' value='27'>02:00-03:00시</option>
+			<option id='28' value='28'>03:00-04:00시</option>
+			<option id='29' value='29'>04:00-05:00시</option>
+			<option id='30' value='30'>05:00-06:00시</option>
 		</select>
 		<input id="Search" type=button value="검색하기">
 		
@@ -189,11 +192,10 @@ int each = RestaurantDAO.EACH;
 	<table class="center" >
 		<tr>
 			<%
-			int totalcont = dao.getTotalRestaurants();
-			if (totalcont % each ==0){
-				pagenumb = totalcont / each;
+			if (total % each ==0){
+				pagenumb = total / each;
 			} else {
-				pagenumb = totalcont / each +1;
+				pagenumb = total / each +1;
 			}
 			/* for (int i =1 ; i <= pagenumb; i ++){
 			out.print("<td><a href='test.jsp?branch=2&page="+i+"'>"+i+"</a></td>");
