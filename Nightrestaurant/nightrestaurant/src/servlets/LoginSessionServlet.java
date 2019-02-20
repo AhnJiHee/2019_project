@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,10 +31,9 @@ public class LoginSessionServlet extends HttpServlet {
 			session.setAttribute("password", password);
 			html = "<table>" +
 					"	<tr>" +
-					"		<td><h3>성공적으로 로그인 되었습니다!<br></h3></td>" + 
+					"		<td><h3>성공적으로 로그인 되었습니다!</h3></td>" + 
 					"	</tr>" +
-					"</table>" +
-					"<input type=button class='logout' value='로그아웃'>";
+					"</table>";
 			/*RequestDispatcher rd = request.getRequestDispatcher("loginstatus.jsp");
 			rd.forward(request, response);*/
 		}else if (result.equals("확인")){

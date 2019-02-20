@@ -81,7 +81,13 @@ response.setHeader("ETag", d.toString() );%>
 				<li><a href="#intro">심야 식당</a></li>
 				<li><a href="#one">메뉴</a></li>
 				<li><a href="#two">추천 식당</a></li>
-				<li><a href="#work"><b>로그인</b></a></li>
+				<li>
+				<% if(session.getAttribute("id")==null){ %>
+					<a href="#work"><b>로그인</b></a>
+				<% } else { %>
+					<a href="#work"><b>로그아웃</b></a>
+				<% } %>
+				</li>
 				<li><a href="#contact">문의</a></li>
 			</ul>
 		</nav>
