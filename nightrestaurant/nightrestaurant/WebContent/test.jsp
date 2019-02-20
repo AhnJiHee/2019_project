@@ -19,7 +19,7 @@ response.setHeader("ETag", d.toString() );%>
 	<script type="text/javascript">
 	$(document).ready(function() {
 	
-		$("#login").click(function() {
+		$("#login").click(function() {	
 			var id=$("#id").val();
 			var pw=$("#pw").val();
 			var param="id="+id+"&pw="+pw;
