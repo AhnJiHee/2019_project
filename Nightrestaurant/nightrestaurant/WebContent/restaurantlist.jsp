@@ -26,7 +26,7 @@
 			var closetime = $("#closetime option:selected").val();
 			param = "branch="+branch+"&province="+province+"&closetime="+closetime+"&block=1&page=1"
 			$.ajax({
-				type: "get",
+				type: "post",
 				url: "restaurantlist.jsp",
 				data: param,
 				success: function(data) {
@@ -36,7 +36,6 @@
 			$.ajax({
 	            type: "POST",
 	            url: "http://localhost:8081/nightrestaurant/R",
-	            
 	            data: {"province" : province, "closetime" : closetime} ,
 	            success: function() {
 	               $("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>"); 
@@ -52,7 +51,7 @@
 			var page = $("#prevpage").val();
 			var param = "branch="+branch+"&block="+block+"&page="+page;
 			$.ajax({
-				type: "get",
+				type: "post",
 				url: "restaurantlist.jsp",
 				data: param,
 				success: function(data) {
@@ -68,7 +67,7 @@
 			var page = $(e.target).html();
 			var param = "branch="+branch+"&block="+block+"&page="+page;
 			$.ajax({
-				type: "get",
+				type: "post",
 				url: "restaurantlist.jsp",
 				data: param,
 				success: function(data) {
@@ -84,7 +83,7 @@
 			var page = $("#nextpage").val();
 			var param = "branch="+branch+"&block="+block+"&page="+page;
 			$.ajax({
-				type: "get",
+				type: "post",
 				url: "restaurantlist.jsp",
 				data: param,
 				success: function(data) {

@@ -26,7 +26,7 @@
 			var word = $("#word").val();
 			var param = "tag=" + tag + "&word=" + word;
 			$.ajax({
-				type : "POST",
+				type : "get",
 				url : "boardlistsearch.jsp",
 				data : param,
 				success : function(data) {

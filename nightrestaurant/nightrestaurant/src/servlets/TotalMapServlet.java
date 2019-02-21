@@ -14,7 +14,8 @@ import Rconnect.RLeaflet2;
 @WebServlet("/totalmap")
 public class TotalMapServlet extends HttpServlet {
        
-   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   request.setCharacterEncoding("UTF-8");
       //String action = "leaflet2";
       //if(action.equals("leaflet2")) {
       /*String province = (String) request.getSession().getAttribute("province");

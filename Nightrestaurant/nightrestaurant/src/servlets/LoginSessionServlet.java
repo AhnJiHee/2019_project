@@ -15,7 +15,8 @@ import dao.MemberDAO;
 @WebServlet("/login")
 public class LoginSessionServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
 		String id = request.getParameter("id");
 		String password = request.getParameter("pw");

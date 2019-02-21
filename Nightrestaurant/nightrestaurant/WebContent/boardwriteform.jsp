@@ -20,11 +20,13 @@
 <script src="jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	$("input[name=write]").on("click", function(){
-		var up=$("input[name=write]").val();
-		var boardtitle=$("input[name='boardtitle']").val();
+	$("input[name='write']").on("click", function(){
+		var up=$("input[name='write']").val();
+		var boardtitle=$("textarea[name='boardtitle']").val();
 		var boardcontents=$("textarea[name='boardcontents']").val();
 		var param="action="+up+"&boardtitle="+boardtitle+"&boardcontents="+boardcontents
+		var referrer
+		alert(param);
 		$.ajax({
 			type: "get",
 			url: "board",
@@ -53,8 +55,9 @@ $(document).ready(function() {
 		</tr>
 		<tr>
 			<td><textarea rows=10 cols=100 name="boardcontents" placeholder = "내용을 입력하세요 "  style = " font-family: 'NEXEN TIRE_Regular';"></textarea></td>
-		</tr><tr>
-			<td><p style = " font-family: 'NEXEN TIRE_Regular';">작성자 : <%=session.getAttribute("id") %></p></td>
+		</tr>
+		<tr>
+			<td><p style = " font-family: 'NEXEN TIRE_Regular';s">작성자 : <%=session.getAttribute("id") %></p></td>
 		</tr>
 		<tr>
 			<td><input type=button name="write" value="저장" style = "font-family: 'NEXEN TIRE_Regular';"><br>

@@ -26,11 +26,12 @@
 			var pw=$("#pw").val();
 			var param="id="+id+"&pw="+pw;
 			$.ajax({
-				type: "get",
+				type: "post",
 				url: "login",
 				data: param,
 				success: function(data) {
 					$(".login_div").html(data);
+					window.location.reload();
 				}
 			});
 			return false;
@@ -51,9 +52,23 @@
 		}); // login end */
 		
 		$(".logout").on("click", function(){
-			location.href = "logout";
-			alert("로그아웃 되었습니다");
-		}); // logout end
+	         /* var id = session.getAttribute("id"); */
+	         $.ajax({
+	            type: "POST",
+	            url: "logout",
+	            /* data: {"id" : id}, */
+	            success: function() {
+	               window.location.reload();
+	               alert("로그아웃 되었습니다.");
+	            },
+	            error : function(){
+	                  alert("오류발생")
+	                 }
+	            
+	         });
+	         return false;
+	         
+	      }); // logout end
 	
 	}); // ready end
 	</script>
