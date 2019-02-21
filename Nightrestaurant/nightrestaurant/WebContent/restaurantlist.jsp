@@ -41,7 +41,7 @@
 	            success: function() {
 	               /* alert("ㅋㅋ"); */
 	               
-	               $("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' width='100%' height='500' seamless></iframe>"); 
+	               $("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' width=100% height=700px seamless></iframe>"); 
 	            },
 	            error : function(){
 	               alert("오류발생")}
@@ -102,13 +102,29 @@
 </script>
 
 <style>
+	#div1 {
+		width: 100%;
+		height: 20%;
+		padding: 10px;
+	}
+	#iframearea {
+		witdh: 60%;
+		height: 80%;
+		padding: 10px;
+		float: right;
+	}
+	
+	div div button{
+		float: right;
+	}
+	
 	div div.list {
-		width: 250px;
+		width: 340px;
 		height: 80%;
 		padding: 10px
 	}
 	div div table.restaurant {
-		width: 200px;
+		width:325px;
 		height: 100px;
 		text-align: center;
 		padding: 10px;
@@ -138,14 +154,15 @@ int each = RestaurantDAO.EACH;
 		
 		<!-- selection form -->
 		<!-- 구 선택 select-->
-		<select id="province" name="province"> 
+		<select id="province" name="province" style = "float: left; width: 40%"> 
 			<option value='' selected>구를 선택하세요</option>
 			<% for(int i = 0; i < province.length; i++) {
 				out.println("<option value='"+province[i]+"'>" + province[i] + "</option>");
 			}%>
 		</select>
+		<h4 style = "float: left; width: 1%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
 		<!-- 시간 선택 => 마감시간으로 전달 select-->
-		<select id="closetime" name="closetime"> 
+		<select id="closetime" name="closetime" style = "float: left; width: 40%"> 
 			<option value='' selected>원하는 시간대를 선택하세요</option>
 			<option id='23' value='23'>10시 이후</option>
 			<option id='24' value='24'>11시 이후</option>
@@ -156,6 +173,7 @@ int each = RestaurantDAO.EACH;
 			<option id='29' value='29'>새벽 4시 이후</option>
 			<option id='30' value='30'>새벽 5시 이후</option>
 		</select>
+		<h4 style = "float: left; width: 5%" >&nbsp;&nbsp;</h4>
 		<input id="Search" type=button value="검색하기">
 		
 		<!-- 식당 리스트 -->
@@ -189,25 +207,27 @@ int each = RestaurantDAO.EACH;
 				}
 			%>
 			
-			<div>
 			<th> 해당 지역 내 총 <%=total%>개의 식당이 존재합니다.</th>
 			<%
 				// 식당 리스트 출력
 				for (int i = each*(pagenumb-1); i < each*pagenumb; i++) {
 				RestaurantVO vo = list.get(i);
+				if(vo.getKeyword().equals("NA")) {
+					vo.setKeyword("ㅡ");
+				}
 				out.println (
 						"<table class='restaurant' id='list"+i+"' border=1px><tr><td colspan='2'>" + vo.getName() + "</td></tr>" +
 						"<tr><td colspan='2'>" + vo.getAddress() + "</td></tr>" +
 						"<tr><td>"+ vo.getTag() + "</td><td>" + vo.getKeyword() + "</td></tr>" +
-						"<tr><td colspan='2'>" + vo.getBhours() + "</td></tr></table>" +
-						"<tr><td><input type='button' value='찜하기'></input></td></tr></table>"
+						"<tr><td colspan='2'>" + vo.getBhours() + "</td></tr></table>"
 				);}
 			%>
-			</div>
-			
-			
 			
 		</div> 
+			
+			<div id="iframearea">
+			
+			</div>      
 	</div> 
 	
 	<!--페이지 번호-->
@@ -257,11 +277,6 @@ int each = RestaurantDAO.EACH;
 			<input type=hidden id='nextpage' value= <%=nextpage%>>
 		</tr>
 	</table>
-</div>
-<div id='div5'>
-   
-<div id="iframearea"></div>      
-      
 </div>
 
 </body>

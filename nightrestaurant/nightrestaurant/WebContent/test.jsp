@@ -5,10 +5,12 @@
 <%@page import="dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%File f = new File(request.getRealPath(request.getRequestURI()));
-java.util.Date d = new java.util.Date( f.lastModified() );
-response.setHeader("Last-Modified", d.toString() );
-response.setHeader("ETag", d.toString() );%>
+<%
+	File f = new File(request.getRealPath(request.getRequestURI()));
+	java.util.Date d = new java.util.Date( f.lastModified() );
+	response.setHeader("Last-Modified", d.toString() );
+	response.setHeader("ETag", d.toString() );
+%>
 <!DOCTYPE HTML>
 
 <html>
@@ -79,6 +81,7 @@ response.setHeader("ETag", d.toString() );%>
 		<nav>
 			<ul>
 				<li><a href="#intro">심야 식당</a></li>
+				<li><a href="#map">지도</a></li>
 				<li><a href="#one">메뉴</a></li>
 				<li><a href="#two">추천 식당</a></li>
 				<li>
@@ -88,7 +91,6 @@ response.setHeader("ETag", d.toString() );%>
 					<a href="#work"><b>로그아웃</b></a>
 				<% } %>
 				</li>
-				<li><a href="#contact">문의</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -106,35 +108,46 @@ response.setHeader("ETag", d.toString() );%>
 				<strong>심야식당</strong>에 오신 것을 환영합니다.<br />
 			</p>
 			<footer>
-				<a href="#one" class="button style2 down">More</a>
+				<a href="#map" class="button style2 down">More</a>
 			</footer>
 		</div>
 	</section>
 
+	<!-- map -->
+	<section id="map" class="main style2 dark fullscreen">
+		<div class="content box style2"
+			style="overflow-x: hidden; overflow-y: auto; width: 90%; height: 700px;">
+
+			<div class="tabs">
+				<div class="tab-2">dfsfsfs</div>
+
+
+			</div>
+		</div>
+
+		<a href="#one" class="button style2 down anchored">Next</a>
+
+
+	</section>
+
+
 	<!-- One -->
 	<section id="one" class="main style2 right dark fullscreen">
-
-
+		
+		
 		<div class="content box style2"
 			style="overflow-x: hidden; overflow-y: auto; width: 90%; height: 750px;">
 
 			<div class="tabs">
-		<!--	<div class="tab-2">
-					<label for="tab2-1">서울의 식당들</label> <input id="tab2-1"
-						name="tabs-two" type="radio" checked="checked">
-					<div id="tabC">
-
-					</div>
-				</div> -->
 				<div class="tab-2">
-					<label for="tab2-2" id="tores">심야 식당 찾기</label> <input id="tab2-2"
+					<label for="tab2-1" id="tores">심야 식당 찾기</label> <input id="tab2-1"
 						name="tabs-two" type="radio" checked="checked">
 					<div id="tabA">
 						<jsp:include page="restaurantlist.jsp"></jsp:include>
 					</div>
 				</div>
 				<div class="tab-2">
-					<label for="tab2-3" id="toboard">게시판 보기</label> <input id="tab2-3"
+					<label for="tab2-2" id="toboard">게시판 보기</label> <input id="tab2-2"
 						name="tabs-two" type="radio">
 					<div id="tabB">
 						<jsp:include page="boardlist.jsp"></jsp:include>
@@ -313,14 +326,20 @@ response.setHeader("ETag", d.toString() );%>
 	</section>
 
 	<!-- Contact -->
-	<section id="contact" class="main style3 secondary">
+	<section id="contact" class="main style3 secondary"
+		style="width: 100%; height: 300px;"]>
 		<div class="content">
 			<header>
 				<h2>See you again</h2>
-				<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas
-					dolore condimentum.</p>
+				<p>
+					La comida es la forma más primitiva de confort.<br>
+				</p>
+				<p style="font-size: 0.8em;">
+					<b>"좋은 음식은 좋은 대화로 끝이 난다." </b><br> by 조프리 네이어
+
+				</p>
 			</header>
-			<div class="box">
+			<!-- <div class="box">
 				<form method="post" action="#">
 					<div class="fields">
 						<div class="field half">
@@ -337,12 +356,13 @@ response.setHeader("ETag", d.toString() );%>
 						<li><input type="submit" value="Send Message" /></li>
 					</ul>
 				</form>
-			</div>
+			</div> -->
 		</div>
 	</section>
 
 	<!-- Footer -->
-	<footer id="footer">
+	<footer id="footer" style="height: 30px;">
+	
 
 		<!-- Icons -->
 		<ul class="icons">

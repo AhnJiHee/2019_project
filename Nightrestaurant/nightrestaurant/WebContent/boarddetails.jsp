@@ -18,7 +18,7 @@
 table.list {
 	text-align: center;
 	margin: auto;
-	border: 3px solid purple;
+	border: 3px solid #335477;
 }
 </style>
 

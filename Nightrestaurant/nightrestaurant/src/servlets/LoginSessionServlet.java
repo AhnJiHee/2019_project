@@ -34,8 +34,6 @@ public class LoginSessionServlet extends HttpServlet {
 					"		<td><h3>성공적으로 로그인 되었습니다!</h3></td>" + 
 					"	</tr>" +
 					"</table>";
-			/*RequestDispatcher rd = request.getRequestDispatcher("loginstatus.jsp");
-			rd.forward(request, response);*/
 		}else if (result.equals("확인")){
 			html = "<h1>비밀번호를 확인하세요.</h1>"
 					+ "<a href = test.jsp>돌아가기</a>";
