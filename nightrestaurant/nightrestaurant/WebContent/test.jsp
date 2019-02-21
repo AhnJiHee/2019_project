@@ -116,13 +116,29 @@
 	<!-- map -->
 	<section id="map" class="main style2 dark fullscreen">
 		<div class="content box style2"
-			style="overflow-x: hidden; overflow-y: auto; width: 90%; height: 700px;">
-
-			<div class="tabs">
-				<div class="tab-2">dfsfsfs</div>
-
-
-			</div>
+			style= width: 90%; height: 700px;">
+				<table border=3px>
+				<tr>
+					<td><h1 style="font-size:40px; line-height:3em">서울의 심야식당</h1></td>
+				</tr>
+				<tr>
+				 	<td>
+				 		<div class="tabs">
+							<div id="totalmap">
+								<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index2.html' width=400% height=400px seamless></iframe>
+							</div> 
+						</div>
+				 	</td>
+				</tr>
+				<tr>
+					<td>
+						<h4> 해당 지역 내 총 <strong style="font-size:20px; color:#E80C50">23,774</strong> 개의 식당이 존재합니다. </h3>
+					</td>
+				</tr>
+				
+				</table>
+				
+			
 		</div>
 
 		<a href="#one" class="button style2 down anchored">Next</a>

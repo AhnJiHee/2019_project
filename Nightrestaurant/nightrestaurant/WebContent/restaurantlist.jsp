@@ -39,9 +39,7 @@
 	            
 	            data: {"province" : province, "closetime" : closetime} ,
 	            success: function() {
-	               /* alert("ㅋㅋ"); */
-	               
-	               $("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' width=100% height=700px seamless></iframe>"); 
+	               $("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>"); 
 	            },
 	            error : function(){
 	               alert("오류발생")}
@@ -59,6 +57,7 @@
 				data: param,
 				success: function(data) {
 					$("#div4").html(data);
+					$("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>");
 				}
 			});
 		}); //.page end
@@ -68,13 +67,13 @@
 			var block = $("#block").val();
 			var page = $(e.target).html();
 			var param = "branch="+branch+"&block="+block+"&page="+page;
-			alert(param);
 			$.ajax({
 				type: "get",
 				url: "restaurantlist.jsp",
 				data: param,
 				success: function(data) {
 					$("#div4").html(data);
+					$("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>");
 				}
 			});
 		}); //.page end
@@ -90,6 +89,7 @@
 				data: param,
 				success: function(data) {
 					$("#div4").html(data);
+					$("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>");
 				}
 			});
 		}); //.page end
@@ -107,27 +107,23 @@
 		height: 20%;
 		padding: 10px;
 	}
-	#iframearea {
-		witdh: 60%;
-		height: 80%;
-		padding: 10px;
-		float: right;
-	}
 	
 	div div button{
 		float: right;
 	}
 	
 	div div.list {
-		width: 340px;
+		width: 40%;
 		height: 80%;
-		padding: 10px
+		padding: 10px;
+		float: left;
 	}
 	div div table.restaurant {
 		width:325px;
 		height: 100px;
 		text-align: center;
 		padding: 10px;
+		table-layout: fixed;
 	}
 	tr,td {
 		border: 1px;
@@ -205,29 +201,71 @@ int each = RestaurantDAO.EACH;
 				if(request.getParameter("page") != null){
 					pagenumb = Integer.parseInt(request.getParameter("page"));
 				}
-			%>
-			
-			<th> 해당 지역 내 총 <%=total%>개의 식당이 존재합니다.</th>
-			<%
+				out.println (
+						"<table>" +
+						"<tr>" +
+						"   <td style='border-bottom: 1px solid #FAFAFA'>" +
+		                "      <table border=1px style = 'border-top: 1px solid #FAFAFA;'>"
+						);
+	
 				// 식당 리스트 출력
-				for (int i = each*(pagenumb-1); i < each*pagenumb; i++) {
+				for (int i = each*(pagenumb-1); i < each*(pagenumb-1)+3; i++) {
 				RestaurantVO vo = list.get(i);
 				if(vo.getKeyword().equals("NA")) {
 					vo.setKeyword("ㅡ");
 				}
+				String first = vo.getAddress().substring(0, 10);
+				String second = vo.getAddress().substring(10);
 				out.println (
+						"<tr><td style='border-bottom: 1px solid #FAFAFA'>" +
 						"<table class='restaurant' id='list"+i+"' border=1px><tr><td colspan='2'>" + vo.getName() + "</td></tr>" +
-						"<tr><td colspan='2'>" + vo.getAddress() + "</td></tr>" +
+						"<tr><td colspan='2'>" + first + "<br/>" + second + "</td></tr>" +
 						"<tr><td>"+ vo.getTag() + "</td><td>" + vo.getKeyword() + "</td></tr>" +
-						"<tr><td colspan='2'>" + vo.getBhours() + "</td></tr></table>"
+						"<tr><td colspan='2'>" + vo.getBhours() + "</td></tr></table>" +
+						"</td></tr>"
 				);}
-			%>
+				
+				out.println(
+						"</table>"+
+						"</td><td style='border-bottom: 1px solid #FAFAFA'>"+
+						"<table>"+
+						"	<tr>" +
+						"   	<td colspan='2'> 해당 지역 내 총" + total + "개의 식당이 존재합니다.</td>" +
+						"	</tr>" +
+						"   <tr>" +
+						"		<td colspan='2' height='425' style='border-bottom: 1px solid #FAFAFA'>"+
+						"   		<div id='iframearea'></div>"+  
+						"   	</td>"+
+						"   </tr>" +
+						"	<tr>"
+						);
+
+				// 식당 리스트 출력
+				for (int i = each*(pagenumb-1)+3; i < each*pagenumb; i++) {
+				RestaurantVO vo = list.get(i);
+				if(vo.getKeyword().equals("NA")) {
+					vo.setKeyword("ㅡ");
+				}
+				String first = vo.getAddress().substring(0, 10);
+				String second = vo.getAddress().substring(10);
+				out.println (
+						"<td style='border-bottom: 1px solid #FAFAFA'>"+
+						"<table class='restaurant' id='list"+i+"' border=1px><tr><td colspan='2'>" + vo.getName() + "</td></tr>" +
+						"<tr><td colspan='2'>" + first + "<br/>" + second + "</td></tr>" +
+						"<tr><td>"+ vo.getTag() + "</td><td>" + vo.getKeyword() + "</td></tr>" +
+						"<tr><td colspan='2'>" + vo.getBhours() + "</td></tr></table>" +
+						"</td>"
+				);}
+			%>		
+				</tr>
+				</table>
+				</td>
+			</tr>
+			</table>
 			
-		</div> 
+				
 			
-			<div id="iframearea">
-			
-			</div>      
+		</div>     
 	</div> 
 	
 	<!--페이지 번호-->
@@ -260,7 +298,7 @@ int each = RestaurantDAO.EACH;
 			
 			// page 처리
 			if (block > 1) {
-				out.print("<td><span class='prev'>이전</span>");
+				out.print("<td><span class='prev'>◀</span>");
 			}
 			for (int i = block * 10-9 ; i < block * 10+1; i++) {
 				out.print("<td><span class='page'>"+i+"</span></td>");
@@ -269,7 +307,7 @@ int each = RestaurantDAO.EACH;
 				};	
 			};
 			if (block < maxblock) {
-				out.print("<td><span class='next'>다음</span></td>");			
+				out.print("<td><span class='next'>▶</span></td>");			
 			}
 			%>
 			<input type=hidden id='block' value= <%=block%>>
