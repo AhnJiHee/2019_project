@@ -22,11 +22,9 @@
 $(document).ready(function() {
 	$("input[name='write']").on("click", function(){
 		var up=$("input[name='write']").val();
-		var boardtitle=$("textarea[name='boardtitle']").val();
+		var boardtitle=$("input[name='boardtitle']").val();
 		var boardcontents=$("textarea[name='boardcontents']").val();
 		var param="action="+up+"&boardtitle="+boardtitle+"&boardcontents="+boardcontents
-		var referrer
-		alert(param);
 		$.ajax({
 			type: "get",
 			url: "board",
@@ -51,7 +49,7 @@ $(document).ready(function() {
 	<p class = "write" style = "text-align: center; font-size: 1.5em; color: #585858; font-family: 'NEXEN TIRE_Regular';" >게시물 작성</p>
 	<table class="list">
 		<tr>
-			<td><textarea rows=1 cols=100 name="boardtitle" placeholder = "제목을 입력하세요" style = " font-family: 'NEXEN TIRE_Regular';"></textarea></td>
+			<td><input rows=1 cols=100 name="boardtitle" placeholder = "제목을 입력하세요" style = " font-family: 'NEXEN TIRE_Regular';"></textarea></td>
 		</tr>
 		<tr>
 			<td><textarea rows=10 cols=100 name="boardcontents" placeholder = "내용을 입력하세요 "  style = " font-family: 'NEXEN TIRE_Regular';"></textarea></td>

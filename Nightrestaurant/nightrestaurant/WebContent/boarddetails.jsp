@@ -149,7 +149,6 @@ table.center {
 					style="display: inline; float: left; width: 20%;">
 					<input type=button id='update' value="수정" style="width: 100px">
 				</form>
-
 				<form action="boarddetailsdelete.jsp"
 					style="display: inline; float: left; width: 20%;">
 					<input type=button id='delete' value="삭제" style="width: 100px">

@@ -35,10 +35,10 @@
 			});
 			$.ajax({
 	            type: "POST",
-	            url: "http://localhost:8081/nightrestaurant/R",
+	            url: "http://70.12.111.108:8081/nightrestaurant/R",
 	            data: {"province" : province, "closetime" : closetime} ,
 	            success: function() {
-	               $("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>"); 
+	               $("#iframearea").html("<iframe src='http://70.12.111.108:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>"); 
 	            },
 	            error : function(){
 	               alert("오류발생")}
@@ -56,7 +56,7 @@
 				data: param,
 				success: function(data) {
 					$("#div4").html(data);
-					$("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>");
+					$("#iframearea").html("<iframe src='http://70.12.111.108:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>");
 				}
 			});
 		}); //.page end
@@ -72,7 +72,7 @@
 				data: param,
 				success: function(data) {
 					$("#div4").html(data);
-					$("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>");
+					$("#iframearea").html("<iframe src='http://70.12.111.108:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>");
 				}
 			});
 		}); //.page end
@@ -88,7 +88,7 @@
 				data: param,
 				success: function(data) {
 					$("#div4").html(data);
-					$("#iframearea").html("<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>");
+					$("#iframearea").html("<iframe src='http://70.12.111.108:8081/nightrestaurant/leafletchart2/index.html' vertical-align=bottom width=100% height=370 seamless></iframe>");
 				}
 			});
 		}); //.page end

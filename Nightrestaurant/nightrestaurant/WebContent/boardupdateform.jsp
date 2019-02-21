@@ -38,7 +38,6 @@ table.list {
 									.val();
 							var param = "action=" + up + "&newtitle="
 									+ newtitle + "&newcontents=" + newcontents
-							alert(param);
 							$.ajax({
 								type : "get",
 								url : "board",
@@ -113,13 +112,14 @@ table.list {
 
 		<table class="center">
 			<tr>
-				<td><input type=button name="write" id="up" value="수정"
-					style="font-family: 'NEXEN TIRE_Regular';"><br>
-					<center>
-						<input type=button class='back' value="뒤로가기"
-							style="font-family: 'NEXEN TIRE_Regular';">
-					</center></td>
-				<td><input type=button class='back' value="뒤로가기"></td>
+				<td>
+					<input type=button name="write" id="up" value="수정"
+					style="font-family: 'NEXEN TIRE_Regular';">
+					<!-- <center> -->
+					<input type=button class='back' value="뒤로가기"
+					style="font-family: 'NEXEN TIRE_Regular';">
+					<!-- </center> -->
+				</td>
 			</tr>
 
 

@@ -69,6 +69,7 @@
 	         return false;
 	         
 	      }); // logout end
+
 	
 	}); // ready end
 	</script>
