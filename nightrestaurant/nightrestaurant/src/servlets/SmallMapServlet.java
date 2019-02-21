@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Rconnect.RLeaflet;
 
-@WebServlet("/selected")
+@WebServlet("/R")
 public class SmallMapServlet extends HttpServlet {
        
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

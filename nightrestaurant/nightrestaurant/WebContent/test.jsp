@@ -125,7 +125,7 @@
 				 	<td>
 				 		<div class="tabs">
 							<div id="totalmap">
-								<iframe src='http://localhost:8081/nightrestaurant/leafletchart2/index2.html' width=400% height=400px seamless></iframe>
+								<iframe src='http://70.12.111.110:8081/nightrestaurant/leafletchart2/index2.html' width=400% height=400px seamless></iframe>
 							</div> 
 						</div>
 				 	</td>
