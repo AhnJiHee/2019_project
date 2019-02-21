@@ -61,8 +61,7 @@ table.center {
 <script type="text/javascript">
 	$(document).ready(
 			function() {
-				$("#up").on(
-						"click",
+				$("#up").on("click",
 						function() {
 							var up = $("#up").val();
 							var newtitle = $("input[name='newtitle']").val();
