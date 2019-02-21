@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import Rconnect.RLeaflet;
 
 @WebServlet("/R")
-public class SmallMapServlet extends HttpServlet {
+public class RServlet extends HttpServlet {
        
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       //String action = "leaflet2";
