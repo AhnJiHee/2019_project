@@ -14,7 +14,7 @@ public class RLeaflet2 {
          r.eval("library(leaflet)");
          r.eval("library(Kormaps)");
          r.eval("library(htmltools)");
-         r.eval("food <- read.csv('c:/Program Files/Rstudy/2019food.csv')");
+         r.eval("food <- read.csv('c:/Rstudy2/2019food.csv')");
 
          r.eval("Encoding(names(korpopmap2))<-'UTF-8'");
          r.eval("Encoding(korpopmap2@data$name)<-'UTF-8'");

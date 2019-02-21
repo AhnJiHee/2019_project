@@ -14,7 +14,7 @@ import Rconnect.RLeaflet2;
 @WebServlet("/totalmap")
 public class TotalMapServlet extends HttpServlet {
        
-   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   request.setCharacterEncoding("UTF-8");
       //String action = "leaflet2";
       //if(action.equals("leaflet2")) {
@@ -31,9 +31,9 @@ public class TotalMapServlet extends HttpServlet {
         if(!f.exists()) f.mkdir();
         String result = rc.returnLeaflet1((real_path+"/leafletchart2"));
         System.out.println(result);
-        request.setAttribute("leafletChartName2", "http://localhost:8081/nightrestaurant/leafletchart2/"+result);   
+        request.setAttribute("leafletChartName2", "http://70.12.111.108:8081/nightrestaurant/leafletchart2/"+result);   
         
-        String leafletCharName2 = ("http://localhost:8081/nightrestaurant/leafletchart2/"+result);
+        String leafletCharName2 = ("http://70.12.111.108:8081/nightrestaurant/leafletchart2/"+result);
         
 //        response.getWriter().print(leafletCharName2);
 

@@ -37,7 +37,7 @@ $(document).ready(function() {
 		});
 	}); // update end
 	
-	$("#back").on("click", function(){
+	$(".back").on("click", function(){
 		var referrer =  document.referrer;
 		location.href = "test.jsp";
 	});// back end
