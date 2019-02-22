@@ -331,7 +331,7 @@
 												value="로그인"></td>
 										</tr>
 										<tr>
-											<td><input type=text id="pw" name="pw"
+											<td><input type=password id="pw" name="pw"
 												placeholder="비밀번호"></td>
 										</tr>
 									</table>

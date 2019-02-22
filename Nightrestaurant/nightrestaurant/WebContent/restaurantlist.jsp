@@ -262,6 +262,8 @@ int each = RestaurantDAO.EACH;
 				}
 			%>		
 				</tr>
+				
+				
 				</table>
 				</td>
 			</tr>
