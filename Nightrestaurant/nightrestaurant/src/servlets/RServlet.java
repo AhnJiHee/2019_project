@@ -36,9 +36,9 @@ public class RServlet extends HttpServlet {
         if(!f.exists()) f.mkdir();
         String result = rc.returnLeaflet2((real_path+"/leafletchart2"), province, closetime);
         System.out.println(result);
-        request.setAttribute("leafletChartName", "http://localhost:8081/nightrestaurant/leafletchart2/"+result);   
+        request.setAttribute("leafletChartName", "http://70.12.111.108:8081/nightrestaurant/leafletchart2/"+result);   
         
-        String leafletCharName = ("http://localhost:8081/nightrestaurant/leafletchart2/"+result);
+        String leafletCharName = ("http://70.12.111.108:8081/nightrestaurant/leafletchart2/"+result);
         
         response.getWriter().print(leafletCharName);
 

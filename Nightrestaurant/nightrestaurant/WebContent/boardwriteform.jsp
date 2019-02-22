@@ -25,8 +25,6 @@ $(document).ready(function() {
 		var boardtitle=$("textarea[name='boardtitle']").val();
 		var boardcontents=$("textarea[name='boardcontents']").val();
 		var param="action="+up+"&boardtitle="+boardtitle+"&boardcontents="+boardcontents
-		var referrer
-		alert(param);
 		$.ajax({
 			type: "get",
 			url: "board",

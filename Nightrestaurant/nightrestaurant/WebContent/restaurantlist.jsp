@@ -222,7 +222,9 @@ int each = RestaurantDAO.EACH;
 						"<tr><td>"+ vo.getTag() + "</td><td>" + vo.getKeyword() + "</td></tr>" +
 						"<tr><td colspan='2'>" + vo.getBhours() + "</td></tr></table>" +
 						"</td></tr>"
-				);}
+				);
+				if( i == (list.size()-1) ) break; 
+				}
 				
 				out.println(
 						"</table>"+
@@ -241,6 +243,7 @@ int each = RestaurantDAO.EACH;
 
 				// 식당 리스트 출력
 				for (int i = each*(pagenumb-1)+3; i < each*pagenumb; i++) {
+				if( i >= (list.size()) ) break;
 				RestaurantVO vo = list.get(i);
 				if(vo.getKeyword().equals("NA")) {
 					vo.setKeyword("ㅡ");
@@ -254,7 +257,9 @@ int each = RestaurantDAO.EACH;
 						"<tr><td>"+ vo.getTag() + "</td><td>" + vo.getKeyword() + "</td></tr>" +
 						"<tr><td colspan='2'>" + vo.getBhours() + "</td></tr></table>" +
 						"</td>"
-				);}
+				);
+				if( i == (list.size()-1) ) break;
+				}
 			%>		
 				</tr>
 				</table>
