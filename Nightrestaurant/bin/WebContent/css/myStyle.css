@@ -1,0 +1,130 @@
+
+/* 배너 */
+.banner_div {
+	 left: 20px;
+	 background: url(../Images/nightRestaurant.png);
+	 width: 1200px;
+	 height: 300px;
+  	bottom-: 0;
+  	right: 0;
+  	margin: 20px auto;
+}
+ 
+/* 로그인 */
+.login_div {
+	margin-top: 7%;
+	top: -10px;
+	 left: 20px;
+	 background-color: #e9e1cb;
+	 width: 100%;
+	 height: 20%;
+  	bottom-: 0;
+  	right: 0;
+  	padding: 7px;
+  	text-align: center;
+}
+ 
+/* 로그인 + 메뉴 영역*/
+#div3 {
+	float: left;
+	top: -100px;
+	 left: 600px;
+	 background-color: #220000;
+	 height: 800px;
+  	bottom-: 0;
+  	right: 0;
+	width: 20%;
+	margin-left: 130px;
+}
+ 
+#menuNavi{
+	margin-top: 10%;
+	margin-bottom: 7%;
+	 left: 20px;
+	 background-color: #408080;
+	 width: 100%;
+	 height: 70%;
+  	bottom-: 0;
+  	right: 0;
+	
+}
+ 
+/* 메인창*/
+#div4 {
+float: left;
+	top: 0px;
+	 left: 20px;
+	 background-color: #8080ff;
+	margin-left: 1%;
+	 height: 800px;
+  	bottom-: 0;
+  	right: 0;
+  	width: 58%;
+}
+
+
+/*버튼 ss*/
+@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT:400|Muli:300,700');
+
+.btn.fill {
+    background: #d5cdcd;
+}
+.btn {
+    position: relative;
+    display: inline-block;
+    color: #282828;
+    border: none;
+    border-radius: 0;
+    outline: 0;
+    padding: 1.25rem 2rem;
+    font-family: inherit;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    -webkit-transform: translate(0);
+    transform: translate(0);
+    letter-spacing: 0.1875rem;
+}
+.btn::before {
+    position: absolute;
+    content: "";
+    transition: -webkit-transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ff8080;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 100%;
+    transform-origin: 100%;
+}
+a {
+    transition: color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    color: #d5cdcd;
+    text-decoration: none;
+}
+.btn:hover {
+    color: #282828;
+}
+.btn.fill {
+    background: #d5cdcd;
+}
+
+a:hover {
+    color: #fff;
+}
+.btn:hover::before {
+    transition: -webkit-transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1);
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 0%;
+    transform-origin: 0%;
+}

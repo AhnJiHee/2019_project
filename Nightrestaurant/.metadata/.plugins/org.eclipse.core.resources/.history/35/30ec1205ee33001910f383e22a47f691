@@ -1,0 +1,34 @@
+package vo;
+
+public class LocaltimeVO {
+	String province;
+	String closetime;
+	
+	public LocaltimeVO() {
+		super();
+	}
+
+	public LocaltimeVO(String province, String closetime) {
+		this.province = province;
+		this.closetime = closetime;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public int getClosetime() {
+		return closetime;
+	}
+
+	public void setClosetime(String closetime) {
+		this.closetime = closetime;
+	}
+	
+	
+	
+}

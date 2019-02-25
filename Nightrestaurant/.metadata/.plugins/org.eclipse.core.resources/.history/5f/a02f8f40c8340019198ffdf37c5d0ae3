@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<table border=1px>
+<tr>
+	<td>레스토랑1</td>
+	<td colspan=4 rowspan=5>지도 표현 부분</td>
+</tr>
+<tr>
+	<td>레스토랑2</td>
+</tr>
+<tr>
+	<td>레스토랑3</td>
+</tr>
+<tr>
+	<td>레스토랑4</td>
+</tr>
+<tr>
+	<td>레스토랑5</td>
+	<td>레스토랑6</td>
+	<td>레스토랑7</td>
+	<td>레스토랑8</td>
+	<td>레스토랑9</td>
+	<td>레스토랑10</td>
+</tr>
+
+</table>
+
+
+</body>
+</html>

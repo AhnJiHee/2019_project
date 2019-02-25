@@ -1,0 +1,93 @@
+package servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.BoardDAO;
+import dao.MemberDAO;
+import vo.BoardVO;
+
+@WebServlet("/board")
+public class BoardCRUDServlet extends HttpServlet {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		MemberDAO mdao = new MemberDAO();
+		BoardDAO bdao = new BoardDAO();
+		response.setContentType("text/html;charset=utf-8");
+		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
+		String html = "";
+
+		String action = request.getParameter("action");
+		if (action.equals("삭제")) {
+			int seq = (Integer) session.getAttribute("boardseq");
+			bdao.deleteBoard(seq);
+			html = "<!DOCTYPE html>" + "<html>" + "<head>"
+					+ "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>" + "<title>CSS</title>"
+					+ "<style>" + "div {" + "	text-align: center;" + "}" + "" + "" + ".button {"
+					+ "	background-color: #4CAF50;" + "	border: none;" + "	color: white;" + "	padding: 15px 32px;"
+					+ "	text-align: center;" + "	text-decoration: none;" + "	display: inline-block;"
+					+ "	font-size: 16px;" + "}" + "</style>" + "</head>" + "<body background='images/background.png'>"
+					+ "	<font size='2em' color='silver'>*게시글 삭제</font><br><div>"
+					+ "	<img src='images/Mark.png' width='130px' height='150px' alt=''><br>"
+					+ "	<font size='7em'>게시글이 </font> <font size='7em'"
+					+ "	style='font-weight: bold'>삭제</font> <font size='7em'>되었습니다.</font><br><br>"
+					+ "<form class='center' action='test.jsp'>" + "<input type=submit value='메인으로 돌아가기'>"
+					+ "</form></div></body></html>";
+
+		} else if (action.equals("수정")) {
+			BoardVO vo = (BoardVO) session.getAttribute("boardvo");
+			int seq = vo.getBoardseq();
+			String boardwriter = vo.getBoardwriter();
+			String newtitle = (String) request.getParameter("newtitle");
+			String newcontents = (String) request.getParameter("newcontents");
+			bdao.updateBoard(seq, newtitle, newcontents);
+			html = "<!DOCTYPE html>" + "<html>" + "<head>"
+					+ "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>" + "<title>CSS</title>"
+					+ "<style>" + "div {" + "	text-align: center;" + "}" + "" + "" + ".button {"
+					+ "	background-color: #4CAF50;" + "	border: none;" + "	color: white;" + "	padding: 15px 32px;"
+					+ "	text-align: center;" + "	text-decoration: none;" + "	display: inline-block;"
+					+ "	font-size: 16px;" + "}" + "</style>" + "</head>" + "<body background='images/background.png'>"
+					+ "	<font size='2em' color='silver'>*게시글 수정</font><br><div>"
+					+ "	<img src='images/Mark.png' width='130px' height='150px' alt=''><br>"
+					+ "	<font size='7em'>게시글이 </font> <font size='7em'"
+					+ "	style='font-weight: bold'>수정</font> <font size='7em'>되었습니다.</font><br><br>"
+					+ "<table class='list' border='2px'>" + "	<tr>" + "		<td>제목</td><td>" + newtitle + "</td>"
+					+ "	</tr>" + "	<tr>" + "		<td>작성자</td><td>" + boardwriter + "</td>" + "	</tr>" + "	<tr>"
+					+ "		<td height='300'>내용</td><td width=500>" + newcontents + "</td>" + "	</tr>" + "</table>"
+					+ "<form class='center' action='test.jsp'><input type=submit value='메인으로 돌아가기'></form>";
+
+		} else if (action.equals("저장")) {
+			String boardtitle = (String) request.getParameter("boardtitle");
+			String boardcontents = (String) request.getParameter("boardcontents");
+			String boardwriter = (String) session.getAttribute("id");
+			BoardVO vo = new BoardVO(boardtitle, boardcontents, boardwriter);
+			bdao.insertBoard(vo);
+			html = "<!DOCTYPE html>" + "<html>" + "<head>"
+					+ "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>" + "<title>CSS</title>"
+					+ "<style>" + "div {" + "	text-align: center;" + "}" + "" + "" + ".button {"
+					+ "background-color: #4CAF50;" + "	border: none;" + "	color: white;" + "	padding: 15px 32px;"
+					+ "text-align: center;" + "	text-decoration: none;" + "	display: inline-block;" + "font-size: 16px;"
+					+ "}" + "</style>" + "</head>" + "<body background='images/background.png'>"
+					+ "<font size='2em' color='silver'>*게시글 저장</font><br><div>"
+					+ "<img src='images/Mark.png' width='130px' height='150px' alt=''><br>"
+					+ "<font size='7em'>게시글이 </font> <font size='7em'"
+					+ "style='font-weight: bold'>저장</font> <font size='7em'>되었습니다.</font><br><br>"
+					+ "<table class='list' border='2px'>" + "<tr>" + "<td>제목</td><td>" + boardtitle + "</td>" + "</tr>"
+					+ "<tr>" + "<td>작성자</td><td>" + boardwriter + "</td>" + "</tr>" + "<tr>"
+					+ "<td height='300'>내용</td><td width=500>" + boardcontents + "</td>" + "</tr>" + "</table>" + ""
+					+ "<form class='center' action='test.jsp'><input type=submit value='메인으로 돌아가기'></form>";
+		}
+		out.println(html);
+
+	}
+}

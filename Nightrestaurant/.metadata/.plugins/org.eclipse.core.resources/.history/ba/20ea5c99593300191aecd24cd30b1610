@@ -1,0 +1,263 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import vo.BoardVO;
+import vo.MemberVO;
+
+public class BoardDAO {
+	
+	public static final int EACH = 5;
+	
+	// 전체 게시물 목록 조회 메소드
+	public ArrayList<BoardVO> getBoardList(){
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			String sql = "select boardseq 번호, boardtitle 제목,  boardwriter 작성자,"
+				+ " to_char(boardtime, 'YYYY/MM/DD hh24:mi:ss') 작성시간, boardviewcount 조회수"
+				+ " from board order by 번호 desc";
+			PreparedStatement pt = con.prepareStatement(sql);
+			ResultSet rs = pt.executeQuery();
+				
+			while(rs.next()){
+				BoardVO vo = new BoardVO();
+				vo.setBoardseq(rs.getInt("번호"));
+				vo.setBoardtitle(rs.getString("제목"));
+				vo.setBoardwriter(rs.getString("작성자"));
+				vo.setBoardtime(rs.getString("작성시간"));
+				vo.setBoardviewcount(rs.getInt("조회수"));
+				list.add(vo);
+			}
+			 
+			con.close();
+		}catch(Exception e) {
+				e.printStackTrace();
+		}
+		return list;
+	}
+	
+	// 게시물 페이징 메소드
+	// 보여주고 싶은 페이지 번호 / 페이지마다 보여주려는 게시물 개수
+	public ArrayList<BoardVO> getBoardList(int pagenum){
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			String sql = "select X.r, X.boardseq 번호, X.boardtitle 제목, X.boardwriter 작성자,"
+					 + " to_char(X.boardtime, 'YYYY/MM/DD hh24:mi:ss') 작성시간, X.boardviewcount 조회수"
+					 + " from (select rownum r, A.boardseq, A.boardtitle, A.boardwriter, A.boardtime, A.boardviewcount"
+					 + " from (select * from board order by boardtime desc) A"
+					 + " where rownum <= ?) X"
+					 + " where X.r >=?";
+			PreparedStatement pt = con.prepareStatement(sql);
+			int start = (pagenum-1)*EACH +1;
+			int end = pagenum*EACH;		
+			pt.setInt(2, start);
+			pt.setInt(1, end);			
+			ResultSet rs = pt.executeQuery();	
+			while(rs.next()){
+				BoardVO vo = new BoardVO();
+				vo.setBoardseq(rs.getInt("번호"));
+				vo.setBoardtitle(rs.getString("제목"));
+				vo.setBoardwriter(rs.getString("작성자"));
+				vo.setBoardtime(rs.getString("작성시간"));
+				vo.setBoardviewcount(rs.getInt("조회수"));
+				list.add(vo);
+			}
+			 
+			con.close();
+		}catch(Exception e) {
+				e.printStackTrace();
+		}
+		return list;
+	}
+	
+	// 게시물 목록 검색 메소드
+		public ArrayList<BoardVO> getBoardList(String tag, String word){
+			ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+			
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+				PreparedStatement pt = null;
+				
+				// 제목 검색
+				if(tag.equals("boardtitle")) { 
+					String sql = "select boardseq 번호, boardtitle 제목,  boardwriter 작성자,"
+							+ " to_char(boardtime, 'YYYY/MM/DD hh24:mi:ss') 작성시간, boardviewcount 조회수"
+							+ " from board where boardtitle like ? order by 번호 desc";
+					pt = con.prepareStatement(sql);
+					pt.setString(1, "%"+word+"%");
+					pt.executeUpdate();
+					
+				// 내용 검색	
+				} else if(tag.equals("boardcontents")) {
+					String sql = "select boardseq 번호, boardtitle 제목,  boardwriter 작성자,"
+							+ " to_char(boardtime, 'YYYY/MM/DD hh24:mi:ss') 작성시간, boardviewcount 조회수"
+							+ " from board where boardcontents like ? order by 번호 desc";
+					pt = con.prepareStatement(sql);
+					pt.setString(1, "%"+word+"%");
+					pt.executeUpdate();
+
+				// 작성자 검색
+				} else {
+					String sql = "select boardseq 번호, boardtitle 제목,  boardwriter 작성자,"
+							+ " to_char(boardtime, 'YYYY/MM/DD hh24:mi:ss') 작성시간, boardviewcount 조회수"
+							+ " from board where boardwriter like ? order by 번호 desc";
+					pt = con.prepareStatement(sql);
+					pt.setString(1, "%"+word+"%");
+					pt.executeUpdate();
+					}
+				
+				ResultSet rs = pt.executeQuery();
+				while(rs.next()){
+					BoardVO vo = new BoardVO();
+					vo.setBoardseq(rs.getInt("번호"));
+					vo.setBoardtitle(rs.getString("제목"));
+					vo.setBoardwriter(rs.getString("작성자"));
+					vo.setBoardtime(rs.getString("작성시간"));
+					vo.setBoardviewcount(rs.getInt("조회수"));
+					list.add(vo);
+				}
+				
+				con.close();
+			}catch(Exception e) {
+					e.printStackTrace();
+			}
+			return list;
+		}
+	
+	// 게시물 조회 메소드
+	public BoardVO getBoardDetail(int seq){
+		BoardVO vo = new BoardVO();
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			String sql = "select boardseq 번호, boardtitle 제목,  boardcontents 내용, boardwriter 작성자"
+					+ ", to_char(boardtime, 'YYYY/MM/DD hh24:mi:ss') 작성시간, boardviewcount 조회수"
+					+ " from board where boardseq = ? order by 번호 desc";
+			
+			PreparedStatement pt = con.prepareStatement(sql);
+				
+			pt.setInt(1, seq);
+			ResultSet rs = pt.executeQuery();
+			rs.next();
+			vo.setBoardseq(rs.getInt("번호"));
+			vo.setBoardtitle(rs.getString("제목"));
+			vo.setBoardcontents(rs.getString("내용"));
+			vo.setBoardwriter(rs.getString("작성자"));
+			vo.setBoardtime(rs.getString("작성시간"));
+			vo.setBoardviewcount(rs.getInt("조회수"));
+			con.close();
+		}catch(Exception e) {
+				e.printStackTrace();
+		}			
+		return vo;
+	}
+	
+	// 게시물 저장 메소드
+	public void insertBoard(BoardVO vo) {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			String sql = 
+					"insert into board values "
+					+ " ( (select max(boardseq)+1 from board) , ? , ? , ? , sysdate, 0)";
+			PreparedStatement pt = con.prepareStatement(sql);
+	
+			pt.setString(1, vo.getBoardtitle());
+			pt.setString(2, vo.getBoardcontents());
+			pt.setString(3, vo.getBoardwriter());
+	
+			int insertRow = pt.executeUpdate();
+
+			con.close();
+		}catch(Exception e) {
+				e.printStackTrace();
+		}
+	}
+	
+	// 게시물 수정 메소드
+	public void updateBoard(int seq, String newtitle, String newcontents) {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			String sql = 
+					"update board set boardtitle=? "
+					+ ", boardcontents = ? where boardseq = ?";
+			PreparedStatement pt = con.prepareStatement(sql);
+	
+			pt.setString(1, newtitle);
+			pt.setString(2, newcontents);
+			pt.setInt(3, seq);
+			pt.executeUpdate();
+			con.close();
+		}catch(Exception e) {
+				e.printStackTrace();
+		}
+		
+	}
+	
+	// 게시물 삭제 메소드
+	public void deleteBoard(int seq) {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			String sql = 
+					"delete board where boardseq = ?";
+			PreparedStatement pt = con.prepareStatement(sql);
+			pt.setInt(1, seq);
+			pt.executeUpdate();
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
+	
+	// 조회수 카운트 메서드
+	public void viewCount(int seq) {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			String sql = 
+					"update board set boardviewcount = (select max(boardviewcount)+1 from board where boardseq= ?) where boardseq=?";
+			PreparedStatement pt = con.prepareStatement(sql);
+			pt.setInt(1, seq);
+			pt.setInt(2, seq);
+			pt.executeUpdate();
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 총 게시물 수 조회
+	
+	public int getTotalContents() {
+		int count = 0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			String sql = "select count(*) from board";
+			PreparedStatement pt = con.prepareStatement(sql);
+			ResultSet rs = pt.executeQuery();
+			rs.next();
+			count = rs.getInt("count(*)");
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+}

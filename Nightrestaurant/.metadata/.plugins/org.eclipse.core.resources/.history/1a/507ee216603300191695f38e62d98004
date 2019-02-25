@@ -1,0 +1,20 @@
+package vo;
+
+public class PageVO {
+
+	int nowPage;
+	int startPage;
+	int endPage;
+	int maxPage;
+	int limit;
+	
+	public PageVO(int nowPage, int startPage, int endPage, int maxPage, int limit) {
+		this.nowPage = nowPage;
+		this.startPage = startPage;
+		this.endPage = endPage;
+		this.maxPage = maxPage;
+		this.limit = limit;
+	}
+	
+	
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<table>
+<tr>
+<td>레스토랑1</td>
+<td colspan="2" rowspan="2">지도</td>
+</tr>
+<tr>
+<td>레스토랑2</td>
+</tr>
+<tr>
+<td>레스토랑3</td>
+<td>레스토랑4</td>
+<td>레스토랑5</td>
+</tr>
+</table>
+
+<table border=1px>
+<tr>
+	<td>
+		<table border=1px>
+			<tr>
+			<td>레스토랑1</td>
+			</tr>
+			<tr>
+			<td>레스토랑2</td>
+			</tr>
+			<tr>
+			<td>레스토랑3</td>
+			</tr>
+		</table>
+	</td><td>
+	<table border=1px>
+		<tr>
+		<td colspan="2" height="50">지도</td>
+		</tr>
+		<tr>
+		<td>레스토랑4</td>
+		<td>레스토랑5</td>
+		</tr>
+	</table>
+	</td>
+</tr>
+</table>
+
+<table border=1px>
+		<tr>
+			<td colspan="2" width=500>해당 지역에...</td>
+		</tr>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+</table>
+
+
+
+</body>
+</html>

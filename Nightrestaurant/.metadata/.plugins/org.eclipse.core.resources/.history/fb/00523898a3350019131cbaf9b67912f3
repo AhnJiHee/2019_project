@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//WebContent/assets/css/main.css=UTF-8
+encoding//src/Rconnect/RLeaflet.java=MS949
+encoding//src/dao/BoardDAO.java=MS949
+encoding//src/dao/MemberDAO.java=MS949
+encoding//src/dao/RestaurantDAO.java=MS949
+encoding//src/servlets/BoardCRUDServlet.java=MS949
+encoding//src/servlets/LoginSessionServlet.java=MS949
+encoding//src/servlets/LogoutServlet.java=MS949
+encoding//src/servlets/MainServlet.java=MS949
+encoding//src/servlets/RServlet.java=MS949
+encoding//src/servlets/SigninServlet.java=MS949
+encoding//src/servlets/SmallMapServlet.java=MS949
