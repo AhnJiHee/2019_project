@@ -46,7 +46,7 @@ public class SigninServlet extends HttpServlet {
 				+ "	<br> <font size='4em' color=#6E6E6E>회원님은 심야식당의 모든 기능을 이용할\n"
 				+ "		수 있습니다.</font><br> <font size='4em' color=#6E6E6E>로그인 후 이용할 수\n"
 				+ "		있습니다.</font><br> <br>\n" + "		<form method='get'\n"
-				+ "		action='http://localhost:8081/nightrestaurant/test.jsp'>\n"
+				+ "		action='http://70.12.111.108:8081/nightrestaurant/test.jsp'>\n"
 				+ "		<button class='button' type='submit'>메인페이지로</button>\n" + "		</form>\n"
 				+ "\n" + "	</div>\n" + "</body>\n" + "</html>\n";
 		
