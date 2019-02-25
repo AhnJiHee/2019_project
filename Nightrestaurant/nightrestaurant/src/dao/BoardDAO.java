@@ -19,7 +19,7 @@ public class BoardDAO {
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 			String sql = "select boardseq 번호, boardtitle 제목,  boardwriter 작성자,"
 				+ " to_char(boardtime, 'YYYY/MM/DD hh24:mi:ss') 작성시간, boardviewcount 조회수"
 				+ " from board order by 번호 desc";
@@ -50,7 +50,7 @@ public class BoardDAO {
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 			String sql = "select X.r, X.boardseq 번호, X.boardtitle 제목, X.boardwriter 작성자,"
 					 + " to_char(X.boardtime, 'YYYY/MM/DD hh24:mi:ss') 작성시간, X.boardviewcount 조회수"
 					 + " from (select rownum r, A.boardseq, A.boardtitle, A.boardwriter, A.boardtime, A.boardviewcount"
@@ -86,7 +86,7 @@ public class BoardDAO {
 			
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 				PreparedStatement pt = null;
 				
 				// 제목 검색
@@ -141,7 +141,7 @@ public class BoardDAO {
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 			String sql = "select boardseq 번호, boardtitle 제목,  boardcontents 내용, boardwriter 작성자"
 					+ ", to_char(boardtime, 'YYYY/MM/DD hh24:mi:ss') 작성시간, boardviewcount 조회수"
 					+ " from board where boardseq = ? order by 번호 desc";
@@ -168,7 +168,7 @@ public class BoardDAO {
 	public void insertBoard(BoardVO vo) {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 			String sql = 
 					"insert into board values "
 					+ " ( (select max(boardseq)+1 from board) , ? , ? , ? , sysdate, 0)";
@@ -190,7 +190,7 @@ public class BoardDAO {
 	public void updateBoard(int seq, String newtitle, String newcontents) {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 			String sql = 
 					"update board set boardtitle=? "
 					+ ", boardcontents = ? where boardseq = ?";
@@ -211,7 +211,7 @@ public class BoardDAO {
 	public void deleteBoard(int seq) {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 			String sql = 
 					"delete board where boardseq = ?";
 			PreparedStatement pt = con.prepareStatement(sql);
@@ -228,7 +228,7 @@ public class BoardDAO {
 	public void viewCount(int seq) {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 			String sql = 
 					"update board set boardviewcount = (select max(boardviewcount)+1 from board where boardseq= ?) where boardseq=?";
 			PreparedStatement pt = con.prepareStatement(sql);
@@ -247,7 +247,7 @@ public class BoardDAO {
 		int count = 0;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","board","board");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@70.12.111.108:1521:xe","board","board");
 			String sql = "select count(*) from board";
 			PreparedStatement pt = con.prepareStatement(sql);
 			ResultSet rs = pt.executeQuery();

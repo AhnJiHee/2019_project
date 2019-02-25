@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,14 +15,14 @@ import dao.MemberDAO;
 @WebServlet("/login")
 public class LoginSessionServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
 		String id = request.getParameter("id");
 		String password = request.getParameter("pw");
 		MemberDAO mdao = new MemberDAO();
 		String result = mdao.ifmember(id, password);
 		String html = "";
-
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
@@ -33,24 +32,18 @@ public class LoginSessionServlet extends HttpServlet {
 			session.setAttribute("password", password);
 			html = "<table>" +
 					"	<tr>" +
-					"		<td><h3>" + id + " 회원님 환영합니다.<br></h3></td>" + 
+					"		<td><h3>성공적으로 로그인 되었습니다!</h3></td>" + 
 					"	</tr>" +
-					"</table>" +
-					"<input type=button id='logout' value='로그아웃'>" +
-					"<script>" +
-					"	window.location.reload();" +
-					"</script>";
-			/*RequestDispatcher rd = request.getRequestDispatcher("loginstatus.jsp");
-			rd.forward(request, response);*/
+					"</table>";
 		}else if (result.equals("확인")){
 			html = "<h1>비밀번호를 확인하세요.</h1>"
-					+ "<a href = mainpage.jsp>돌아가기</a>";
+					+ "<a href = test.jsp>돌아가기</a>";
 		}else if (result.equals("비회원")){
 			html = "<h1>회원이 아닙니다.</h1>"
 					+ "<a href = signin.jsp>회원가입 하러 가기</a>";
 		}else {
 			html = "<h1>오류가 발생했습니다.</h1>"
-					+ "<a href = mainpage.jsp>돌아가기</a>";
+					+ "<a href = test.jsp>돌아가기</a>";
 		}
 		
 		out.println(html);

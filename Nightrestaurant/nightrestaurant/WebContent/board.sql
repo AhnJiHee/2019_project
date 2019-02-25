@@ -4,6 +4,7 @@
 conn board/board
 select * from board; 
 select * from member;
+select * from restaurant;
 
 select boardseq 번호, boardtitle 제목,  boardwriter 작성자,
 to_char(boardtime, 'YYYY/MM/DD hh24:mi:ss') 작성시간, boardviewcount 조회수

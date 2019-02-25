@@ -142,7 +142,7 @@ $(document).ready(function() {
 	<div class = "snb">
 		<ul>
 	      <li><a href="main?branch=1">게시판으로 가기"></a></li>
-	      <li><a href="main?branch=2">심야식당 보러 가기"></a></li>
+	      <li><a href="main?branch=2&block=1">심야식당 보러 가기"></a></li>
 	      <li><a href="#">어쩌구</a></li>
 	      <li><a href="#">저쩌구</a></li>
 	      </ul>
